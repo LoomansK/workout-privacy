@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Titanrep Manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbfaf8; --surface:#ffffff; --surface2:#f3f1ed; --ink:#17171a; --muted:#5f5e66; --faint:#8a8991;
+    --line:#e7e2da; --accent:#e4571e; --accent-ink:#c2410c; --accent-soft:#fff1e9;
+    --yellow-bg:#fef9c3; --yellow-ink:#713f12; --yellow-line:#facc15;
+    --red-bg:#fee2e2; --red-ink:#7f1d1d; --red-line:#f87171;
+    --green-bg:#dcfce7; --green-ink:#14532d;
+    --radius:14px;
+    --sidebar:272px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#101012; --surface:#1a1a1d; --surface2:#232326; --ink:#f4f1ed; --muted:#b8b3ac; --faint:#8f8a84;
+      --line:#2e2e33; --accent:#ff6b35; --accent-ink:#ffb08a; --accent-soft:#2b1d16;
+      --yellow-bg:#3a3410; --yellow-ink:#fde68a; --yellow-line:#a16207;
+      --red-bg:#3b1616; --red-ink:#fca5a5; --red-line:#991b1b;
+      --green-bg:#122a1a; --green-ink:#86efac;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Barlow",system-ui,-apple-system,Segoe UI,sans-serif;font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent-ink);text-decoration-color:color-mix(in srgb,var(--accent) 45%, transparent);text-underline-offset:3px}
+  a:hover{text-decoration-color:var(--accent)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+
+  /* Intro */
+  .intro{padding:36px 0 8px;border-bottom:3px solid var(--ink)}
+  .intro-top{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between}
+  h1{font-family:"Barlow Condensed",sans-serif;font-size:clamp(44px,7vw,72px);line-height:.92;letter-spacing:.01em;text-transform:uppercase;margin:0;font-weight:700}
+  h1 span{color:var(--accent)}
+  .intro p.lede{font-size:19px;line-height:1.55;color:var(--muted);max-width:640px;margin:14px 0 0}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}
+  .meta span{font-size:13px;font-weight:600;letter-spacing:.02em;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 11px;color:var(--muted)}
+  .meta span b{color:var(--ink);font-weight:700}
+  .quick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0 6px}
+  .quick a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;text-decoration:none;color:var(--ink)}
+  .quick a strong{display:block;font-family:"Barlow Condensed",sans-serif;font-size:20px;letter-spacing:.02em;text-transform:uppercase;line-height:1.05}
+  .quick a span{display:block;font-size:14px;color:var(--muted);margin-top:5px;line-height:1.45}
+  .quick a em{font-style:normal;color:var(--accent);font-weight:700;font-size:13px}
+
+  /* Search */
+  .searchbar{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 92%, transparent);backdrop-filter:blur(10px);padding:14px 0 12px;border-bottom:1px solid var(--line)}
+  .searchrow{display:flex;gap:10px;align-items:center}
+  .searchrow label{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em;font-weight:700;font-size:15px;white-space:nowrap}
+  .searchrow input{flex:1;min-width:0;height:44px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:0 14px;font:inherit;font-size:16px;outline:none}
+  .searchrow input:focus{border-color:var(--accent)}
+  #searchCount{font-size:13.5px;color:var(--muted);white-space:nowrap}
+
+  /* Layout */
+  .layout{display:grid;grid-template-columns:var(--sidebar) 1fr;gap:36px;align-items:start;margin-top:26px}
+  nav.toc{position:sticky;top:78px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
+  nav.toc h2{font-family:"Barlow Condensed",sans-serif;font-size:15px;letter-spacing:.08em;text-transform:uppercase;margin:2px 6px 10px;color:var(--muted)}
+  nav.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+  nav.toc li{counter-increment:toc}
+  nav.toc a{display:flex;gap:10px;align-items:baseline;padding:7px 8px;border-radius:8px;text-decoration:none;color:var(--ink);font-size:14.5px;font-weight:500;line-height:1.35}
+  nav.toc a::before{content:counter(toc,decimal-leading-zero);font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--faint);flex:none}
+  nav.toc a:hover{background:var(--surface2)}
+  nav.toc a.active{background:var(--accent-soft);color:var(--accent-ink);font-weight:700}
+  nav.toc a.active::before{color:var(--accent)}
+
+  main{min-width:0}
+  section.chapter{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px 28px 24px;margin-bottom:18px;scroll-margin-top:86px}
+  section.chapter.hidden{display:none}
+  .ch-head{display:flex;gap:14px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:18px}
+  .ch-num{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:600;background:var(--ink);color:var(--bg);border-radius:7px;padding:5px 7px;line-height:1;margin-top:5px;flex:none}
+  .ch-head h2{font-family:"Barlow Condensed",sans-serif;font-size:34px;line-height:.95;text-transform:uppercase;letter-spacing:.01em;margin:0;font-weight:700}
+  .ch-head p{margin:6px 0 0;color:var(--muted);font-size:15.5px;line-height:1.5;max-width:620px}
+  h3{font-size:17px;margin:22px 0 8px;line-height:1.3}
+  h3:first-of-type{margin-top:4px}
+  p{margin:0 0 12px}
+  ul,ol.body{margin:0 0 14px;padding-left:22px}
+  li{margin-bottom:6px}
+  li::marker{color:var(--accent);font-weight:700}
+  .small{font-size:14px;color:var(--muted)}
+  strong{font-weight:700}
+  code{font-family:"JetBrains Mono",monospace;font-size:.86em;background:var(--surface2);border:1px solid var(--line);padding:1px 5px;border-radius:6px}
+
+  .callout{border-radius:12px;padding:14px 16px;margin:16px 0;font-size:15px;line-height:1.55}
+  .callout p:last-child{margin-bottom:0}
+  .callout .ct{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em;font-weight:700;font-size:14px;display:block;margin-bottom:4px}
+  .callout.orange{background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 28%, var(--line))}
+  .callout.orange .ct{color:var(--accent-ink)}
+  .callout.note{background:var(--surface2);border:1px solid var(--line)}
+  .callout.quote{background:var(--surface2);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;font-style:italic}
+
+  /* Labels */
+  .label{display:inline-flex;align-items:center;font-family:"JetBrains Mono",monospace;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:3px 8px;border-radius:999px;vertical-align:middle;white-space:nowrap}
+  .label.y{background:var(--yellow-bg);color:var(--yellow-ink);border:1px solid var(--yellow-line)}
+  .label.r{background:var(--red-bg);color:var(--red-ink);border:1px solid var(--red-line)}
+  .label.o{background:var(--accent-soft);color:var(--accent-ink);border:1px solid color-mix(in srgb,var(--accent) 35%, var(--line))}
+  .label.g{background:var(--green-bg);color:var(--green-ink);border:1px solid color-mix(in srgb,#22c55e 30%, var(--line))}
+
+  /* Tables -> stacked on mobile */
+  .tbl{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:14px 0 18px}
+  .tbl table{width:100%;border-collapse:collapse;font-size:15px}
+  .tbl th{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.05em;font-size:14px;text-align:left;background:var(--surface2);padding:10px 14px;border-bottom:1px solid var(--line)}
+  .tbl td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+  .tbl tr:last-child td{border-bottom:none}
+  .tbl td:first-child{font-weight:600}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+  .mini{background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .mini h4{margin:0 0 8px;font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.04em;font-size:17px}
+  .mini ul{margin:0;padding-left:18px;font-size:14.5px}
+  .mini p{font-size:14.5px}
+  .mini p:last-child,.mini ul:last-child{margin-bottom:0}
+
+  .steps{counter-reset:step;list-style:none;padding:0;margin:0 0 14px}
+  .steps li{counter-increment:step;display:flex;gap:12px;margin-bottom:10px}
+  .steps li::before{content:counter(step);flex:none;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:14px;display:grid;place-items:center;margin-top:2px}
+  .formula{font-family:"JetBrains Mono",monospace;font-size:14px;background:var(--ink);color:var(--bg);border-radius:10px;padding:14px 16px;margin:12px 0;line-height:1.6;overflow-wrap:anywhere}
+  .formula span{opacity:.65}
+
+  footer{margin-top:28px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:14px;line-height:1.6}
+  #noResults{display:none;background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:22px;text-align:center;color:var(--muted)}
+
+  @media (max-width:860px){
+    .layout{grid-template-columns:1fr}
+    nav.toc{position:static}
+    nav.toc ol{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+    .quick{grid-template-columns:1fr}
+    .two-col{grid-template-columns:1fr}
+    section.chapter{padding:22px 18px 18px}
+    .ch-head h2{font-size:29px}
+    .searchrow label{display:none}
+    /* Stack tables */
+    .tbl table,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
+    .tbl thead{display:none}
+    .tbl tr{border-bottom:1px solid var(--line);padding:6px 0}
+    .tbl tr:last-child{border-bottom:none}
+    .tbl td{border-bottom:none;padding:5px 14px}
+    .tbl td:first-child{padding-top:10px}
+    .tbl td:last-child{padding-bottom:10px}
+  }
+  @media print{
+    .searchbar,nav.toc,.quick{display:none!important}
+    .layout{grid-template-columns:1fr}
+    section.chapter{break-inside:avoid;border-color:#ccc}
+    body{background:#fff}
+  }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="intro">
+    <div class="intro-top">
+      <h1>Titanrep <span>Manual</span></h1>
+    </div>
+    <p class="lede">Everything in the app that isn't obvious on the screen — what ramp-in and deload actually mean, when the app assigns them, how your weights are picked, what a pain flag does, and exactly what leaves your phone when you export. If Titanrep did something and you don't know why, the answer is in here.</p>
+    <div class="meta">
+      <span>App: <b>Titanrep — Workout Plans &amp; AI Coaching</b></span>
+      <span>Covers: <b>iOS App 1.1, through v370</b></span>
+      <span>Last updated: <b>November 8, 2026</b></span>
+      <span>Support: <b>support.titanrep@gmail.com</b></span>
+    </div>
+    <div class="quick">
+      <a href="#export-import"><em>Most asked →</em><strong>Export &amp; Import</strong><span>What is — and is not — in the file when you move to a new phone.</span></a>
+      <a href="#status-labels"><em>Start here →</em><strong>The four labels</strong><span>RAMP-IN, DELOAD, PLATEAU and ⚠ PF — side by side, in one table.</span></a>
+      <a href="#premium"><em>Pricing →</em><strong>Premium &amp; the paywall</strong><span>Monthly, Annual and Lifetime, trials, and the upgrade-only rule.</span></a>
+    </div>
+  </header>
+
+  <div class="searchbar">
+    <div class="searchrow">
+      <label for="q">Find in manual</label>
+      <input id="q" type="search" placeholder="Try: ramp-in, RIR, plateau, export, 1RM, paywall…" autocomplete="off" />
+      <span id="searchCount" aria-live="polite"></span>
+    </div>
+  </div>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Contents">
+      <h2>Contents</h2>
+      <ol id="tocList">
+        <li><a href="#getting-started">Getting started</a></li>
+        <li><a href="#tabs">The five tabs</a></li>
+        <li><a href="#programs">Your program</a></li>
+        <li><a href="#weights">How weights are picked</a></li>
+        <li><a href="#logging">Logging &amp; RIR</a></li>
+        <li><a href="#status-labels">The four status labels</a></li>
+        <li><a href="#ramp-in">Ramp-in</a></li>
+        <li><a href="#deload">Deload</a></li>
+        <li><a href="#plateau">Plateau</a></li>
+        <li><a href="#pain-flags">Pain flags</a></li>
+        <li><a href="#onerm">Estimated 1RM</a></li>
+        <li><a href="#swapping">Swapping &amp; supersets</a></li>
+        <li><a href="#history">History</a></li>
+        <li><a href="#export-import">Export &amp; Import</a></li>
+        <li><a href="#premium">Premium &amp; paywall</a></li>
+        <li><a href="#settings">Settings &amp; profile</a></li>
+        <li><a href="#faq">Questions &amp; answers</a></li>
+      </ol>
+    </nav>
+
+    <main id="main">
+      <div id="noResults">No section matches that search. Try a shorter word — for example <b>ramp</b>, <b>plateau</b>, or <b>export</b> — or clear the search to see the full manual.</div>
+
+      <!-- 1 -->
+      <section class="chapter" id="getting-started" data-search="getting started setup first time welcome disclaimer before you start i understand experience goal seven day">
+        <div class="ch-head"><span class="ch-num">01</span><div><h2>Getting started</h2><p>The one-time Setup page, what it asks, and what happens if you skip a choice.</p></div></div>
+        <p>Titanrep is a free download. The first time you open it you see a welcome screen, then a health and safety disclaimer screen, then a one-time <strong>Setup page</strong> with no tabs at the bottom. Fill it in once, tap Save, and you land on the Home tab. That Setup page never appears again.</p>
+        <h3>Before You Start — the disclaimer</h3>
+        <p>The disclaimer screen is titled <strong>“Before You Start.”</strong> It has a scrollable text box with the disclaimer and an <strong>I Understand</strong> button fixed at the bottom. The disclaimer has five sections: <strong>Health &amp; Safety</strong>, <strong>Exercise Carries Risk</strong>, <strong>Limitation of Liability</strong>, <strong>No Medical Advice</strong>, and <strong>Your Responsibility</strong>.</p>
+        <p>Tapping <strong>I Understand</strong> stores the acceptance on the device. If the disclaimer text changes in a future version, the screen shows again.</p>
+        <h3>What Setup asks</h3>
+        <ul>
+          <li><strong>Goal</strong> — required. Build Strength, Build Muscle, or Both (the button used to read “Get Lean”).</li>
+          <li><strong>Experience</strong> — required. Beginner, Intermediate, or Advanced.</li>
+          <li><strong>The 7-day question</strong> — required. Whether you have worked out in the last 7 days. It is only used once: if you have no workout history at all, it decides whether your first week is a ramp-in week. See <a href="#ramp-in">Ramp-in</a>.</li>
+          <li><strong>Name</strong> — optional.</li>
+          <li><strong>Notes for your coach</strong> — optional. Background the AI Coach uses.</li>
+        </ul>
+        <p>Save stays disabled until Goal, Experience, and the 7-day question are all picked. Name and Notes do not block Save.</p>
+        <div class="callout note"><span class="ct">The starting defaults</span><p>Before Setup is completed, the app's built-in profile defaults to <strong>Intermediate</strong> and <strong>Build Muscle</strong>, on the Push / Pull / Legs program. What you save on Setup replaces those defaults and stays saved whether or not you do a workout. Setup does not ask about equipment or days per week — your days per week come from the program you are on (see <a href="#programs">Your program</a>).</p></div>
+        <h3>Setup is not Settings</h3>
+        <p>After that first Save, the same information lives in the <strong>Settings tab</strong>. There is no Save button there — Name, Notes, Goal, and Experience save automatically as you change them, with a “Saved ✓” indicator. See <a href="#settings">Settings &amp; profile</a>.</p>
+      </section>
+
+      <!-- 2 -->
+      <section class="chapter" id="tabs" data-search="tabs home program coach history settings navigation screens">
+        <div class="ch-head"><span class="ch-num">02</span><div><h2>The five tabs</h2><p>What each tab is for — and what is no longer on the tab you expect.</p></div></div>
+        <div class="tbl"><table>
+          <thead><tr><th>Tab</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td>Home tab</td><td>The main screen. Today's workout, the exercise cards for the session, your target weights, status labels, and Notes for each exercise. This is where you start and log a workout, and where you open your Club Pass.</td></tr>
+            <tr><td>Program tab</td><td>Your current program — its name, weeks, and the full list of workouts and exercises, including a preview of each exercise card. The program name shown here and on the Home tab always match. This is also where you switch programs, through Select Program.</td></tr>
+            <tr><td>Coach tab</td><td>The “Stalled lifts” card when the app detects a stall (see <a href="#plateau">Plateau</a>), the AI Coach overview — tap “Get AI Overview” to generate or refresh it — the “Exercises that bothered you” card (your current pain flags), and the Benchmark lifts card with estimated 1RM trend charts.</td></tr>
+            <tr><td>History tab</td><td>Your workout list — and only your workout list. Every finished workout, with its sets, labels, and RIR values. Export and Import used to live here; they are now in Settings.</td></tr>
+            <tr><td>Settings tab</td><td>Name, Notes for your coach, Goal, and Experience (all auto-saved), plus the Export and Import Workout Data buttons for paying users.</td></tr>
+          </tbody>
+        </table></div>
+        <p>Every expandable card in the app opens and closes the same way, with the same chevron: <strong>⌄</strong> when closed, <strong>⌃</strong> when open — including the exercise cards in History.</p>
+        <p>The AI Coach overview renders one sentence per line.</p>
+        <div class="callout note"><span class="ct">Program note</span><p>If your Goal and Experience in Settings point to a different program than the one you are using, the Coach tab shows its own highlighted <strong>“PROGRAM NOTE”</strong> box, separate from the overview, with this wording: <em>“Your fitness goals in the Settings tab do not match your currently selected program. You can change your selected program in the Program tab.”</em> It is a suggestion only. There is no accept button, and it never changes your program for you.</p></div>
+      </section>
+
+      <!-- 3 -->
+      <section class="chapter" id="programs" data-search="programs ppl push pull legs upper lower full body strength size split experience goal tempo eccentric concentric">
+        <div class="ch-head"><span class="ch-num">03</span><div><h2>Your program</h2><p>Your program is picked from Experience and Goal together — here is the full table.</p></div></div>
+        <p>On the first-time Setup page, Titanrep picks your program from the two answers you gave — Experience and Goal, together:</p>
+        <div class="tbl"><table>
+          <thead><tr><th>Experience</th><th>Build Strength</th><th>Build Muscle</th><th>Both</th></tr></thead>
+          <tbody>
+            <tr><td>Beginner</td><td>Full Body</td><td>Full Body</td><td>Full Body</td></tr>
+            <tr><td>Intermediate</td><td>Upper / Lower Strength</td><td>Upper / Lower Size</td><td>Upper / Lower Size &amp; Strength</td></tr>
+            <tr><td>Advanced</td><td>PPL Strength</td><td>PPL Size</td><td>PPL Size &amp; Strength</td></tr>
+          </tbody>
+        </table></div>
+        <ul>
+          <li><strong>Full Body</strong> — 3 workouts a week (Full Body A, B, and C). Beginners get this for every goal.</li>
+          <li><strong>Upper / Lower</strong> — 4 workouts a week: Upper A, Lower A, Upper B, Lower B.</li>
+          <li><strong>Push / Pull / Legs</strong> — 6 workouts a week: Push A, Pull A, Legs A, then Push B, Pull B, Legs B.</li>
+          <li><strong>Strength, Size, Size &amp; Strength</strong> — the variant changes the sets, reps, and rest, not the split. In the Size &amp; Strength variants, the A workouts focus on strength and the B workouts focus on size.</li>
+          <li>Every program runs in <strong>12-week cycles</strong>. When a cycle ends, the next one begins, and your weights carry over.</li>
+        </ul>
+        <h3>Tempo</h3>
+        <p>Each workout shows a tempo, the same for every exercise in that workout:</p>
+        <ul>
+          <li><strong>Size programs:</strong> “3-second eccentric, explosive concentric”.</li>
+          <li><strong>Strength programs:</strong> “2-3 second eccentric, maximal-intent explosive concentric”.</li>
+          <li><strong>Full Body:</strong> “2-second eccentric, 1-second concentric”.</li>
+        </ul>
+        <h3>Changing your program yourself</h3>
+        <p>The Setup pick is only a starting point. In the <strong>Program tab</strong>, Select Program lists every program and variant — you can filter the list by days per week — and switching is always your choice, never automatic. Two more options appear there that Setup never picks for you:</p>
+        <ul>
+          <li><strong>PPL / Upper / Lower</strong> — the 5-day program (Push, Pull, Legs, Upper, Lower), in Strength, Size, Size &amp; Strength, and Phases variants.</li>
+          <li><strong>Size &amp; Strength Phases</strong> — a variant of Push / Pull / Legs, Upper / Lower, and PPL / Upper / Lower where the rep targets change every 4 weeks: Phase 1 emphasizes size, Phase 2 blends size and strength, Phase 3 emphasizes strength — three phases per 12-week cycle. Starting weights for each new phase are worked out from your logged sets.</li>
+        </ul>
+        <h3>When the automatic pick happens — and when it stops</h3>
+        <p>On the Setup page, the program updates the moment you tap a different Experience or Goal, and Save applies it. That automatic picking <strong>only runs before you have visited either the Home tab or the Program tab</strong>. Once you have visited either one, your program stays put — changing Goal or Experience later does not silently replace it. After setup, Goal is otherwise used only in the Coach tab's “PROGRAM NOTE” box and as background for the AI Coach.</p>
+        <h3>Program resets</h3>
+        <p>If you switch back to a program you have used before, Titanrep asks whether to <strong>pick up where you left off</strong> — at the week you had reached — or <strong>start over at Week 1</strong>. Starting over records a program reset: week counting for that program restarts from that point, and your history is left unchanged. Resets are recorded against a workout date, and they are included in an export so a new phone counts your weeks the same way. See <a href="#export-import">Export &amp; Import</a>.</p>
+      </section>
+
+      <!-- 4 -->
+      <section class="chapter" id="weights" data-search="weights prescribed target how much weight history cap 600 dumbbell numbers from last time">
+        <div class="ch-head"><span class="ch-num">04</span><div><h2>How weights are picked</h2><p>The target on each exercise card comes from that exercise's own history — all of it.</p></div></div>
+        <p>The weight pre-filled on an exercise card — the numbers from last time, carried forward and adjusted — is not a generic chart. It is worked out per exercise from your own logged history, across every workout you have logged, not just workouts in your current program. After each finished workout, the app decides that exercise's next target:</p>
+        <ul>
+          <li><strong>Hit every planned set at the target reps → the weight goes up.</strong> The increase is a percentage of the weight you used: on compound lifts, 2.5% at 200 lb and above, 5% below that; on isolation lifts, 10% up to 20 lb, 7.5% up to 40 lb, and 5% above that. An increase is at least 5 lb, and every target is rounded to the nearest 2.5 lb.</li>
+          <li><strong>Hit every set, but every set was RIR 0 → the weight holds.</strong> All-out grinders earn you another week at the same weight to own it, instead of an increase.</li>
+          <li><strong>Miss the rep target → the weight holds.</strong> Same weight next time, until every planned set hits the target reps.</li>
+          <li><strong>You lowered the weight yourself → that lower weight becomes the target.</strong> Whether or not you hit the reps at the decreased weight, the app keeps it for next time rather than jumping back up.</li>
+          <li><strong>Deload weeks are skipped.</strong> A deload workout never changes the next normal week's target — the week after a deload picks up from the last normal week before it.</li>
+          <li><strong>First time on an exercise.</strong> If you have done the exercise before, the target is converted from your best logged set on it. If you have never done it, the target is estimated from your best exercise for the same muscle, at 90% — the card's note says “Target from your … work — first time on this lift, so adjust after the first set.”</li>
+          <li><strong>Safety cap.</strong> Every prescribed weight is capped at <strong>600 lb</strong> — and at <strong>75 lb</strong> for dumbbell exercises. If an increase would pass the cap, the target holds at the cap.</li>
+          <li><strong>History is the source of truth.</strong> Personal records, stall checks, and targets are all worked out from your full history. If a workout is deleted from History, nothing from it counts anymore — not toward targets, records, or anything else in the app.</li>
+        </ul>
+        <p>Two things change the target for a single week without changing the progression itself: a <a href="#deload">deload</a> (scheduled, or one you apply from the Coach tab) cuts the displayed weight 10% for that workout, and a <a href="#ramp-in">ramp-in</a> week takes a set away but leaves the weight alone.</p>
+        <div class="callout orange"><span class="ct">Estimated 1RM does not set your weight</span><p>The estimated 1RM shown under the Target line is display only. It never feeds back into how your weights are prescribed. See <a href="#onerm">Estimated 1RM</a>.</p></div>
+      </section>
+
+      <!-- 5 -->
+      <section class="chapter" id="logging" data-search="logging sets reps rir reps in reserve rest timer workout continue resume">
+        <div class="ch-head"><span class="ch-num">05</span><div><h2>Logging &amp; RIR</h2><p>How a set is saved, what RIR means, and what “Continue Workout” does and does not restore.</p></div></div>
+        <h3>Logging a set</h3>
+        <p>A set is written and saved at the moment you log it — not at the end of the workout. After you log a set, the rest timer screen opens, where weight, reps, and RIR for that set can all be adjusted together; the set summary screen can adjust them too. Both screens save everything, including RIR.</p>
+        <p>If you leave mid-workout, <strong>Continue Workout</strong> restores the sets you already logged. It does not restore your exact position in the workout — you pick up with your logged sets intact, not necessarily on the exact set you left.</p>
+        <h3>RIR — Reps in Reserve</h3>
+        <p><strong>RIR is how many more reps you could have done when you stopped the set.</strong> Stopped with nothing left: RIR 0. Could have done two more: RIR 2. You log it per set, alongside weight and reps, by tapping <strong>0, 1, 2, 3, 4, or 4+</strong> on the rest timer or set summary screen. Tap the same number again to clear it. In a superset, each exercise gets its own RIR.</p>
+        <ul>
+          <li>RIR is how Titanrep judges effort. The same weight at RIR 1 is a harder set than at RIR 3, and your history keeps the difference.</li>
+          <li><strong>All-grinder rule:</strong> if you hit every planned set but every set was RIR 0, the weight holds next time instead of going up — see <a href="#weights">How weights are picked</a>.</li>
+          <li>RIR shows in the History tab on any set that has a value.</li>
+          <li>Your average RIR is shown on the Coach tab in the “Stalled lifts” card, because a stall at low RIR means something different from a stall at high RIR — see <a href="#plateau">Plateau</a>. A stall is only flagged when the sets have RIR logged; without RIR values, the app cannot tell which kind of stall it is.</li>
+        </ul>
+        <div class="callout note"><span class="ct">Fixed in v363</span><p>RIR once failed to save from the rest timer and set summary screens, so it never appeared in History even though you entered it. Both save paths now include RIR, and a value you enter is the value History shows.</p></div>
+      </section>
+
+      <!-- 6 -->
+      <section class="chapter" id="status-labels" data-search="labels ramp-in deload plateau pain flag pr yellow red notes status">
+        <div class="ch-head"><span class="ch-num">06</span><div><h2>The four status labels</h2><p>Ramp-in, deload, plateau, and pain flag — what each means, who assigns it, and where you see it.</p></div></div>
+        <p>Four conditions can attach to an exercise or a week. Each one is explained in text in the exercise's <strong>Notes</strong>, and each one shows as a <strong>label</strong>: ramp-in and deload appear as the week label on the Home tab while that week is current, and in History every label appears as a pill next to the workout's title on its History card. Ramp-in, deload, and plateau pills are yellow; the pain flag pill is red. History also shows a yellow <span class="label y">★ PR</span> pill on any workout where a set beat that exercise's previous best.</p>
+        <div class="tbl"><table>
+          <thead><tr><th>Label</th><th>What it means</th><th>Who assigns it</th><th>What changes</th></tr></thead>
+          <tbody>
+            <tr><td><span class="label y">RAMP-IN</span></td><td>An ease-back-in week after time away</td><td>The app, automatically</td><td>One fewer set per exercise, for that week</td></tr>
+            <tr><td><span class="label y">DELOAD</span></td><td>A planned lighter week in the program — or a one-time deload you applied</td><td>The program schedule, or you in the Coach tab</td><td>Weight cut 10% and volume cut about 40% for that week</td></tr>
+            <tr><td><span class="label y">PLATEAU</span></td><td>A stalled lift you chose to act on</td><td>The app detects the stall; you apply it in the Coach tab</td><td>That muscle group's weights cut 10% for the next workout</td></tr>
+            <tr><td><span class="label r">⚠ PF</span></td><td>An exercise that bothered you</td><td>You — with “Mark With Pain Flag”</td><td>It stops being the program default; an alternate takes its slot</td></tr>
+          </tbody>
+        </table></div>
+        <p>The next four chapters take each one in full: the exact rule that triggers it, how long it lasts, and how it ends.</p>
+      </section>
+
+      <!-- 7 -->
+      <section class="chapter" id="ramp-in" data-search="ramp-in ramp in break time off gap seven days week one fewer set">
+        <div class="ch-head"><span class="ch-num">07</span><div><h2>Ramp-in</h2><p>What it is: a gentler first week back. When the app assigns it: after more than 7 days away.</p></div></div>
+        <p>A ramp-in is Titanrep easing you back in after a break, instead of handing you the full workout your history says you were doing before the break.</p>
+        <h3>The exact rule</h3>
+        <ul>
+          <li><strong>More than 7 days off triggers it. Exactly 7 days does not.</strong> The gap is measured between your actual workouts.</li>
+          <li>It applies in two situations: <strong>week 1 of a cycle</strong>, when the gap before that cycle's first workout was more than 7 days (or there is no earlier workout), and <strong>any week you return</strong> whose first workout follows a gap of more than 7 days. It is about the gap, not the schedule.</li>
+          <li>It lasts <strong>one week</strong>.</li>
+          <li>During that week, every exercise has <strong>one fewer set</strong> (an exercise never drops below 1 set). The weight is not cut — the exercise's Notes say you can adjust the weight if necessary. Ramp-in cuts a set, not the weight.</li>
+          <li>Ramp-in applies on the cycle-based programs. The Phases variants do not use it — a new phase instead sets fresh starting weights from your logged sets.</li>
+        </ul>
+        <h3>If you have never logged a workout</h3>
+        <p>With no history, there is no gap to measure, so the app uses your answer to the Setup page's 7-day question: if you said you had <strong>not</strong> worked out in the last 7 days, your first week is a ramp-in week. If you said you had, it is not. Once you have real history, the answer is never read again — which is also why it is not included in an export.</p>
+        <div class="callout note"><span class="ct">What you see</span><p>The <span class="label y">RAMP-IN</span> label on the exercise card and in History, with an explanation in the exercise's Notes.</p></div>
+      </section>
+
+      <!-- 8 -->
+      <section class="chapter" id="deload" data-search="deload lighter week scheduled volume recovery week">
+        <div class="ch-head"><span class="ch-num">08</span><div><h2>Deload</h2><p>A planned light week built into the program — not a reaction to a bad week.</p></div></div>
+        <p>A deload is a week of deliberately lighter work, scheduled into the program so recovery is planned instead of forced. In a deload week the app <strong>cuts the weight 10%</strong>, then sets sets and reps to reach <strong>60% of the normal volume</strong> — a 40% volume cut — always keeping at least 2 sets. On bodyweight exercises, reps are cut to 60% instead. It is lighter <strong>by design</strong>, for that week only.</p>
+        <ul>
+          <li><strong>Which weeks:</strong> weeks <strong>6 and 12</strong> of every 12-week cycle. The exception is Full Body, whose only deload week is <strong>week 7</strong>. The Phases variants have no scheduled deload weeks.</li>
+          <li><strong>A deload week does not set your weights back.</strong> Deload workouts are skipped when the app works out your next targets, so the week after a deload picks up from the last normal week before it.</li>
+          <li>A hard week, a missed week, or a week you choose to take easy does not become a scheduled deload.</li>
+          <li>A deload is not a ramp-in: deload comes from the calendar of the program, ramp-in comes from a gap in your attendance.</li>
+        </ul>
+        <h3>The one-time deload</h3>
+        <p>Separately from the schedule, the Coach tab can offer you a one-time deload for a single muscle group when it detects a fatigue stall — the button reads <strong>“Deload [muscle] 10% next workout.”</strong> It cuts that muscle group's weights 10% for the next workout, and it is the same action that records a plateau on the lift. It ends as soon as you complete a workout that trains that muscle group, or after 14 days, whichever comes first. See <a href="#plateau">Plateau</a>.</p>
+        <div class="callout note"><span class="ct">What you see</span><p>The <span class="label y">DELOAD</span> label on the exercise card and in History during that week, with an explanation in the exercise's Notes.</p></div>
+      </section>
+
+      <!-- 9 -->
+      <section class="chapter" id="plateau" data-search="plateau stalled stall 10 percent drop coach tab remove plateau best set cycle">
+        <div class="ch-head"><span class="ch-num">09</span><div><h2>Plateau</h2><p>The app detects the stall. Only you can apply the 10% drop — the app never cuts a weight on its own.</p></div></div>
+        <p>Titanrep watches for stalled lifts and shows them on the Coach tab in a <strong>“Stalled lifts”</strong> card. Detection is automatic; acting on it is not. Nothing changes until you tap the button.</p>
+        <h3>How a stall is detected</h3>
+        <ul>
+          <li>Only <strong>compound lifts</strong> are checked, and only once you have at least <strong>4 workouts</strong> logged for the lift.</li>
+          <li>A lift is flagged when its <strong>top weight has not gone up across its last 4 workouts</strong> — and only when those sets have RIR logged, because the kind of stall is judged from the average RIR:</li>
+          <li><strong>Average RIR 1 or lower — a fatigue stall.</strong> The card says “You're grinding — fatigue is likely the cause,” and offers the deload button below.</li>
+          <li><strong>Average RIR 3 or higher — an easy stall.</strong> The card says “Your sets felt easy — push harder.” There is no button; the fix is effort, not a weight cut.</li>
+          <li>Between those two, no alert is shown. The card shows the exercise name, how many workouts it has stalled for, its top weight, and its average RIR.</li>
+        </ul>
+        <h3>Applying it</h3>
+        <ol class="steps">
+          <li><div>On a fatigue stall, tap <strong>“Deload [muscle] 10% next workout.”</strong> That records the plateau on the lift — with its best set read from your workout history — and cuts <strong>that muscle group's weights 10% for the next workout</strong>.</div></li>
+          <li><div>While it is active, the card shows <strong>Remove Plateau</strong> instead. Tap it at any time to end the plateau yourself.</div></li>
+          <li><div>The 10% cut itself lasts one workout: it ends when you complete a workout that trains that muscle group, or after 14 days if you don't.</div></li>
+        </ol>
+        <h3>How it ends on its own</h3>
+        <ul>
+          <li>It <strong>clears automatically when the lift improves</strong>: when you finish a workout whose best set on that lift beats the best recorded before it — more weight, or the same weight with more reps — the plateau is removed.</li>
+          <li>An active plateau belongs to your <strong>current program and cycle</strong>: it is listed while you are on that program and cycle, and a new cycle or a different program leaves it behind.</li>
+        </ul>
+        <div class="callout quote"><p>Notes text for a plateaued exercise: “Plateau: this lift is stalled (best set X lb × Y reps). Weight cut 10% for this workout. Lasts until the lift improves, or until you remove it in the Coach tab.”</p></div>
+        <div class="callout note"><span class="ct">What you see</span><p>The <span class="label y">PLATEAU</span> label on the exercise card and in History while the plateau is selected.</p></div>
+      </section>
+
+      <!-- 10 -->
+      <section class="chapter" id="pain-flags" data-search="pain flag bothered mark with pain flag pf alternate default coach exercises that bothered you">
+        <div class="ch-head"><span class="ch-num">10</span><div><h2>Pain flags</h2><p>Flag an exercise that bothered you, and it quietly stops being the default for its slot.</p></div></div>
+        <p>If an exercise bothers you — a knee, a shoulder, anything — flag it during the workout with the <strong>“Mark With Pain Flag”</strong> button. While an exercise is flagged, that button reads “Bothering me — tap to clear.” The flag stays on until you remove it — with that button, or with <strong>Clear flag</strong> next to the exercise in the Coach tab's “Exercises that bothered you” card. It does not expire on its own.</p>
+        <h3>What a flag does</h3>
+        <ul>
+          <li>A flagged exercise is <strong>never the program default</strong> for its slot. An alternate is substituted in its place, silently — the workout just shows the alternate.</li>
+          <li>The <strong>one exception:</strong> if every exercise available for a slot is flagged, a flagged exercise is used anyway, so the slot is never empty.</li>
+          <li>The flagged exercise <strong>stays available as an alternate</strong>. Flagging removes it as the default, not from the app.</li>
+          <li>Your current flags are listed on the Coach tab, in the <strong>“Exercises that bothered you”</strong> card — exercise name, the date you flagged it, and any note. The AI Coach sees your flags in its overview. That current list is what transfers in an export.</li>
+          <li>Separately, each finished workout records which of its exercises were flagged at the time — that is the <span class="label r">⚠ PF</span> pill on its History card. Those per-workout records stay with the workout; they are not part of the export file.</li>
+        </ul>
+        <div class="callout quote"><p>Notes text for a flagged exercise: “Pain flag: this exercise is flagged for pain. Stays flagged until you remove it.”</p></div>
+        <div class="callout note"><span class="ct">What you see</span><p>The red <span class="label r">⚠ PF</span> label on the exercise card and in History.</p></div>
+      </section>
+
+      <!-- 11 -->
+      <section class="chapter" id="onerm" data-search="estimated 1rm one rep max epley benchmark lifts trend chart coach squat bench deadlift shoulder press">
+        <div class="ch-head"><span class="ch-num">11</span><div><h2>Estimated 1RM</h2><p>An estimate of your one-rep max, worked out from sets you have already logged. Display only.</p></div></div>
+        <p>Your estimated 1RM is calculated from your best logged set on each lift with the Epley formula:</p>
+        <div class="formula">Estimated 1RM = weight × (1 + reps ÷ 30) <span>— the Epley formula</span></div>
+        <p class="small">The formula treats the logged reps as if they were done to failure, so the estimate reads low on any set you stopped short of failure — a set stopped at RIR 3 estimates lower than the same set taken to RIR 0.</p>
+        <h3>Where it appears</h3>
+        <ul>
+          <li>On the exercise card, as an <strong>“Est. 1RM: X lb”</strong> line under the Target line — on both the Home tab session card and the Program tab preview. The number is your best estimate across all your history for that exercise, rounded to a whole pound. It only appears when that exercise has logged history; with no history there is nothing to estimate from.</li>
+          <li>On the Coach tab, in the <strong>Benchmark lifts</strong> card, as a trend chart per lift covering its last 12 sessions, so you can see the estimate move over time.</li>
+        </ul>
+        <h3>The four benchmark lifts</h3>
+        <div class="tbl"><table>
+          <thead><tr><th>Benchmark lift</th><th>Why it is tracked</th></tr></thead>
+          <tbody>
+            <tr><td>Smith Machine Squat</td><td>Lower-body strength benchmark</td></tr>
+            <tr><td>Hammer Strength Iso-Lateral Horizontal Bench Press</td><td>Pressing strength benchmark</td></tr>
+            <tr><td>Smith Machine Romanian Deadlift</td><td>Hinge strength benchmark</td></tr>
+            <tr><td>Seated Dumbbell Shoulder Press</td><td>Overhead strength benchmark</td></tr>
+          </tbody>
+        </table></div>
+        <p>The Benchmark lifts card is <strong>collapsed by default</strong> — tap its chevron to open it. Chart labels are anchored inside the chart, so the first and last weights and dates are never cut off.</p>
+        <div class="callout orange"><span class="ct">What it does not do</span><p>Estimated 1RM never changes how your weights are prescribed. Your targets come from the progression rules in <a href="#weights">How weights are picked</a> — the estimate is shown for tracking only.</p></div>
+      </section>
+
+      <!-- 12 -->
+      <section class="chapter" id="swapping" data-search="swap alternate alternatives modify default exercise slot superset pair">
+        <div class="ch-head"><span class="ch-num">12</span><div><h2>Swapping &amp; supersets</h2><p>Every slot has a default and at least three alternatives. Supersets keep both exercises' sets.</p></div></div>
+        <h3>Alternatives for every slot</h3>
+        <p>Every exercise that appears as a program default has <strong>at least 3 alternatives</strong> in its swap list. You can swap the default for an alternate for that workout — each alternate shows its own target weight, worked out from your history with that exercise. The swap is recorded on that workout only; the default is the default again next time, unless a rule changes it — a pain flag, for example, substitutes an alternate automatically (see <a href="#pain-flags">Pain flags</a>). Deleting the workout deletes the swap made in it.</p>
+        <p>Each exercise also has a photo, coaching cues, and a muscle diagram. On the diagram, a Primary / Secondary key is overlaid on the image, showing which muscles are primary and which are secondary for that exercise. The Muscles slide for an exercise — including Hanging Knee Raise and Dead Bug — shows its registered diagram.</p>
+        <h3>Supersets</h3>
+        <p>In a superset, two exercises are paired and performed back to back. Both exercises are full exercises in their own right: each keeps its own sets, reps, weight, targets, and RIR when you log them, in History, and in an export. Exporting a superset exports the second exercise as its own entry — its sets are never dropped or folded into the first exercise.</p>
+      </section>
+
+      <!-- 13 -->
+      <section class="chapter" id="history" data-search="history source of truth delete workout records sets pr personal record">
+        <div class="ch-head"><span class="ch-num">13</span><div><h2>History</h2><p>The History tab is the source of truth for the whole app. Delete a workout there, and it is gone everywhere.</p></div></div>
+        <p>The History tab shows only your workout list. Each workout card shows its exercises and sets and the RIR values you logged, and carries its labels as pills next to the workout's title and next to each exercise name. The pills appear in this order: <span class="label r">⚠ PF</span> in red first, then <span class="label y">★ PR</span>, then <span class="label y">PLATEAU</span>, then <span class="label y">DELOAD</span> or <span class="label y">RAMP-IN</span> in yellow.</p>
+        <h3>Why “source of truth” matters</h3>
+        <ul>
+          <li>Target weights, personal records, plateau bests, and estimated 1RM are all worked out <strong>from History</strong>, not from separate stored numbers.</li>
+          <li>Deleting a workout removes everything that came from it: its sets, any Modify picks made in it, and its effect on targets, records, and plateau detection. A deleted test workout leaves no trace anywhere in the app.</li>
+          <li>Because of this, an import that brings your history over brings your targets and records with it — they are rebuilt from the history itself.</li>
+        </ul>
+      </section>
+
+      <!-- 14 -->
+      <section class="chapter" id="export-import" data-search="export import json new phone transfer backup superset profile pain flags program resets premium firebase google records disclaimer acceptance premium usage log">
+        <div class="ch-head"><span class="ch-num">14</span><div><h2>Export &amp; Import</h2><p>Moving to a new phone: exactly what is in the JSON file, and exactly what is not.</p></div></div>
+        <p>Export writes your data to a single JSON file; Import reads that file on the new phone and restores it. The buttons are in the <strong>Settings tab</strong> (they used to be in History). Export only shows when you have workouts to export. Both buttons are a Premium feature — see the end of this chapter.</p>
+        <div class="two-col">
+          <div class="mini"><h4>✓ In the file</h4><ul>
+            <li><strong>All finished workouts</strong> — every exercise, set, rep, weight, target, and RIR value</li>
+            <li><strong>Supersets in full</strong> — both exercises, each as its own entry with its own sets</li>
+            <li><strong>Your profile</strong> — current program, Goal, Experience, days per week, equipment, and your Notes for your coach (the 7-day answer is not included — see below)</li>
+            <li><strong>Current pain flags</strong> — the flags list from the Coach tab's “Exercises that bothered you” card</li>
+            <li><strong>Program resets</strong> — the start-over markers, matched by workout date, so week counting carries over</li>
+          </ul></div>
+          <div class="mini"><h4>✕ Not in the file</h4><ul>
+            <li><strong>In-progress workouts</strong> — only finished workouts export; a workout in progress on the old phone is lost</li>
+            <li><strong>The 7-day answer</strong> — it is only read when there is no history at all, and an import always brings history, so it would never be used</li>
+            <li><strong>Your name and Club Pass number</strong> — both are stored on the phone itself, not in the profile, and they are not included</li>
+            <li><strong>Apple Health data</strong></li>
+            <li><strong>Modify picks</strong> — the swaps you chose inside individual workouts</li>
+            <li><strong>Your stored target weights as numbers</strong> — targets are not carried over as figures; they are rebuilt from the imported history by the same rules that built them originally</li>
+            <li><strong>Per-workout pain-flag badges</strong> — the History badges do not transfer; the current flags list does</li>
+          </ul></div>
+        </div>
+        <h3>How an import lands</h3>
+        <ul>
+          <li>Importing <strong>adds</strong> to what is on the phone — it does not wipe anything first. A workout whose date is already on the phone is <strong>skipped</strong>, and the result message tells you how many workouts and sets were imported, how many were skipped, and names any exercises in the file that this phone's app does not have.</li>
+          <li>The imported profile <strong>overwrites</strong> the profile on the phone, and the imported pain flags <strong>replace</strong> the phone's current flag list.</li>
+          <li>Program resets are matched to workouts by date, so they only land if the workout they follow was imported too (or was already there).</li>
+        </ul>
+        <h3>Who can use it</h3>
+        <p>Export and Import are <strong>locked to paying users</strong>. If you are not paying, the buttons are still shown in Settings, but <strong>disabled</strong>, with the note “Export and Import are a Premium feature.” — so you can see what you are missing. Tapping a disabled button does nothing; there is no paywall popup from these buttons.</p>
+        <h3>Records stored on Google Firebase servers</h3>
+        <p>The app stores two kinds of records on Google Firebase servers:</p>
+        <ul>
+          <li><strong>A disclaimer acceptance record</strong>, written once when the user taps I Understand: anonymous customer ID, disclaimer version, time of acceptance, app version, device model and iOS version; kept 7 years.</li>
+          <li><strong>A premium usage log</strong>, written each time the app lets a user into a premium feature (a workout past the free one, Export, Import): anonymous customer ID, time, which premium feature was used; kept 1 year.</li>
+        </ul>
+        <p>Neither record contains a name, email address, or workout data.</p>
+      </section>
+
+      <!-- 15 -->
+      <section class="chapter" id="premium" data-search="premium paywall price monthly annual lifetime trial subscribe upgrade subscribed revenuecat restore">
+        <div class="ch-head"><span class="ch-num">15</span><div><h2>Premium &amp; the paywall</h2><p>Three ways to pay, a 7-day free trial on the two subscriptions, and an upgrade-only rule.</p></div></div>
+        <p>Titanrep is a free download, and your <strong>first workout is free</strong>. When you start your second workout without Premium, the paywall appears — its headline is “First workout was on us.” Titanrep Premium unlocks the full app, including Export and Import.</p>
+        <div class="tbl"><table>
+          <thead><tr><th>Plan</th><th>Price</th><th>Free trial</th></tr></thead>
+          <tbody>
+            <tr><td>Monthly</td><td>$4.99 / month</td><td>7 days free</td></tr>
+            <tr><td>Annual</td><td>$29.99 / year</td><td>7 days free</td></tr>
+            <tr><td>Lifetime</td><td>$89.99 one-time</td><td>No trial — it is a one-time purchase, not a subscription</td></tr>
+          </tbody>
+        </table></div>
+        <h3>The upgrade-only rule</h3>
+        <ul>
+          <li>You can only move <strong>up</strong>, never down. <strong>Monthly</strong> can upgrade to Annual or Lifetime. <strong>Annual</strong> can upgrade to Lifetime. <strong>Lifetime</strong> buys nothing else — there is nothing above it.</li>
+          <li>There is no “Best Value” badge on Annual, because Annual is not the best value — Lifetime is.</li>
+          <li>The plan you actively own carries a <span class="label o">Subscribed</span> badge, and its button is disabled. If you own a subscription and a higher plan as well, the badge sits on the higher plan.</li>
+          <li>The rule itself is printed on the paywall, centered below Restore Purchases: “Subscription downgrades are not allowed until the current subscription expires. Upgrades take effect immediately.” Plans you cannot buy are simply disabled.</li>
+          <li>Purchases are validated through RevenueCat against the <strong>Titanrep Premium</strong> entitlement. Use Restore Purchases after reinstalling or changing phones to recover an existing purchase on the same Apple account.</li>
+        </ul>
+        <h3>The rating prompt</h3>
+        <p>Titanrep only asks for an App Store rating in a narrow case: right after a <strong>paying</strong> user — not on the free trial — <strong>finishes a workout in which they hit a personal record</strong>, and never after the first workout. It never asks trial or free users.</p>
+      </section>
+
+      <!-- 16 -->
+      <section class="chapter" id="settings" data-search="settings profile name notes coach goal experience saved auto save club pass disclaimer">
+        <div class="ch-head"><span class="ch-num">16</span><div><h2>Settings &amp; profile</h2><p>No Save button — everything here saves itself, and says so.</p></div></div>
+        <ul>
+          <li><strong>Name</strong> — shown in the Home tab greeting and on your Club Pass. It is stored on the phone itself and saves as you type.</li>
+          <li><strong>Notes for your coach</strong> — background the AI Coach reads when it advises you. Edits save automatically when you leave the field, and the notes are part of your profile — they are included in an export.</li>
+          <li><strong>Goal</strong> and <strong>Experience</strong> — save automatically too. Changing them after setup does not change your program by itself (see <a href="#programs">Your program</a>); if they no longer match your program, the Coach tab says so.</li>
+          <li>Every change shows a green <strong>“Saved ✓”</strong> indicator. It appears beside the heading of the section just changed — Your Name, Notes for your coach, Your Goal, or Experience — and disappears after about two seconds. If you do not see it, the change has not saved.</li>
+          <li><strong>Export / Import Workout Data</strong> buttons live here, under “Your Workout Data.” Export appears only when you have workouts. For non-paying users both buttons are shown disabled with the note “Export and Import are a Premium feature.”</li>
+          <li><strong>Disclaimer</strong> — the Settings tab has a Disclaimer section showing the full disclaimer text.</li>
+        </ul>
+        <div class="callout note"><span class="ct">Two things that live outside the export</span><p>Your <strong>name</strong> and <strong>Club Pass number</strong> are stored on the phone itself, not in the workout database, and they are <strong>not</strong> part of the export file. On a new phone, enter them again. Your Club Pass itself — a QR code for gym check-in — is opened from the Home tab.</p></div>
+      </section>
+
+      <!-- 17 -->
+      <section class="chapter" id="faq" data-search="faq questions why did the app questions answers">
+        <div class="ch-head"><span class="ch-num">17</span><div><h2>Questions &amp; answers</h2><p>The not-obvious things, asked the way people actually ask them.</p></div></div>
+        <h3>Why does my workout have fewer sets this week?</h3>
+        <p>Almost always a ramp-in: you were away more than 7 days, so every exercise loses one set for one week. Check for the <span class="label y">RAMP-IN</span> label. Exactly 7 days away does not trigger it — it has to be more than 7.</p>
+        <h3>Why is this exercise suddenly a different exercise?</h3>
+        <p>If the exercise has a pain flag, it is never the slot's default — an alternate is substituted silently. Remove the flag from the Coach tab's “Exercises that bothered you” card and it can be the default again.</p>
+        <h3>Why did my weight drop 10%?</h3>
+        <p>Two things do that, and both are temporary. It is a <strong>deload week</strong> (week 6 or 12 of your cycle; week 7 on Full Body), where the 10% cut comes with a 40% volume cut — or it is the <strong>one-time deload you applied</strong> from a “Stalled lifts” card in the Coach tab, which cuts one muscle group 10% for one workout. Nothing in Titanrep cuts a weight without one of those two reasons, and neither one changes your underlying progression.</p>
+        <h3>What is the “Stalled lifts” card on the Coach tab?</h3>
+        <p>The app flagging a compound lift whose top weight has not gone up in its last 4 workouts. If your average RIR on it is 1 or lower, it is treated as a fatigue stall and you can apply a one-time 10% deload for that muscle group. If your average RIR is 3 or higher, the card just tells you the sets felt easy — push harder. See <a href="#plateau">Plateau</a>.</p>
+        <h3>The app says my goals don't match my program. What do I do?</h3>
+        <p>Nothing, unless you want to. It is a suggestion in the Coach tab's highlighted “PROGRAM NOTE” box, separate from the overview, with no accept button. To act on it, change your selected program in the Program tab yourself.</p>
+        <h3>I deleted a test workout. Why did my targets change?</h3>
+        <p>Because History is the source of truth. Targets, records, and plateau bests are all worked out from History, so deleting the workout removes its effect everywhere.</p>
+        <h3>I got a new phone. What will I lose?</h3>
+        <p>Export on the old phone and import on the new one, and you keep your finished workouts, your profile (including your Notes for your coach), your current pain flags, and your program resets. You lose: any workout in progress at export time, your Modify picks, your name and Club Pass number (re-enter them), and the 7-day answer (never needed once history exists). Export and Import require Premium.</p>
+        <h3>Why is there no Est. 1RM on this exercise?</h3>
+        <p>It only appears when the exercise has logged history. Log a set for it and the estimate appears under the Target line.</p>
+        <h3>Can I downgrade from Annual to Monthly?</h3>
+        <p>No. The paywall is upgrades only: Monthly → Annual or Lifetime, Annual → Lifetime. A plan you cannot buy explains why its button is disabled.</p>
+        <h3>Where did Export go? It was in History.</h3>
+        <p>It moved to the Settings tab, along with Import. History now shows only the workout list.</p>
+      </section>
+
+      <footer>
+        <p><strong>Titanrep</strong> — Workout Plans &amp; AI Coaching. Support: support.titanrep@gmail.com · This manual covers iOS App 1.1 through v370 and was last updated November 8, 2026. Prices are in US dollars. This manual is a living document and is refined as the app changes.</p>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script>
+(function(){
+  var q = document.getElementById('q');
+  var chapters = Array.prototype.slice.call(document.querySelectorAll('section.chapter'));
+  var tocLinks = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+  var count = document.getElementById('searchCount');
+  var noResults = document.getElementById('noResults');
+
+  function norm(s){ return (s||'').toLowerCase(); }
+  q.addEventListener('input', function(){
+    var term = norm(q.value).trim();
+    if(!term){ chapters.forEach(function(c){ c.classList.remove('hidden'); }); count.textContent=''; noResults.style.display='none'; return; }
+    var shown = 0;
+    chapters.forEach(function(c){
+      var hay = norm(c.textContent + ' ' + (c.getAttribute('data-search')||''));
+      var hit = term.split(/\s+/).every(function(w){ return hay.indexOf(w) !== -1; });
+      c.classList.toggle('hidden', !hit);
+      if(hit) shown++;
+    });
+    count.textContent = shown + (shown===1 ? ' section' : ' sections');
+    noResults.style.display = shown===0 ? 'block' : 'none';
+  });
+
+  // Active TOC highlight
+  if('IntersectionObserver' in window){
+    var map = {};
+    tocLinks.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          tocLinks.forEach(function(a){ a.classList.remove('active'); });
+          var link = map[e.target.id];
+          if(link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    chapters.forEach(function(c){ obs.observe(c); });
+  }
+})();
+</script>
+</body>
+</html>
