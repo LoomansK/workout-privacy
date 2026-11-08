@@ -14,9 +14,9 @@ a { color: #0066cc; }
 </head>
 <body>
 <h1>Privacy Policy for Titanrep</h1>
-<p><strong>Last updated:</strong> November 5, 2026</p>
+<p><strong>Last updated:</strong> November 8, 2026</p>
 
-<p>Titanrep itself does not collect your personal data. Your workout data stays on your device. The one exception is subscriptions, which are managed by RevenueCat — see Subscriptions below.</p>
+<p>Titanrep itself does not collect your personal data. Your workout data stays on your device. The exceptions are subscriptions, which are managed by RevenueCat, and two server-side records stored with Google Firebase — see Subscriptions and Firebase below.</p>
 
 <h2>What stays on your device</h2>
 <p>Your workout history, sets, reps, weights, program selections, and preferences are stored locally on your iPhone. This data never leaves your device except as described below.</p>
@@ -25,11 +25,14 @@ a { color: #0066cc; }
 <p>If you choose to log a completed workout to Apple Health, Titanrep sends the workout type, duration, and timing to the Health app on your device using Apple's native HealthKit framework. This happens only when you finish a workout and only if you've granted permission. Titanrep does not read your health data.</p>
 
 <h2>No accounts, no analytics, no tracking</h2>
-<p>Titanrep requires no account or sign-in. The app contains no third-party analytics, advertising, or crash reporting software. The one third-party service in the app is RevenueCat, which validates subscriptions (see Subscriptions below).</p>
+<p>Titanrep requires no account or sign-in. The app contains no third-party analytics, advertising, or crash reporting software. The third-party services in the app are RevenueCat, which validates subscriptions (see Subscriptions below), and Google Firebase, which stores disclaimer acceptance records and premium usage logs (see Firebase below).</p>
 
 <h2>Subscriptions</h2>
 <p>Subscriptions and one-time purchases are processed by Apple through the App Store. Titanrep does not see or store your payment information.</p>
 <p>Titanrep uses RevenueCat to manage subscriptions and verify whether your subscription is active. When you subscribe, RevenueCat receives an anonymous customer ID generated on your device, your App Store receipt, the products you purchased, purchase and expiry dates, price and currency, your country as reported by the App Store, and basic device and app information (device model, iOS version, and app version). RevenueCat uses this only to validate your subscription and determine your access to premium features. RevenueCat's own privacy policy is at <a href="https://www.revenuecat.com/privacy">revenuecat.com/privacy</a>.</p>
+
+<h2>Firebase</h2>
+<p>Titanrep uses Google Firebase (Firestore) to store two kinds of records on Google's servers. First, when you accept the health and safety disclaimer, the app stores a record of that acceptance: an anonymous customer ID, the disclaimer version, the time of acceptance, the app version, and your device model and iOS version. This record is kept for 7 years so acceptance can be proven if needed. Second, when you use a premium feature (starting a workout past the free one, exporting data, or importing data), the app stores a record of that use: an anonymous customer ID, the time, and which feature was used. This record is kept for 1 year and is used to verify premium access and spot paywall problems. Neither record contains your name, email address, or any workout data. Google's privacy policy is at <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</p>
 
 <h2>Data export</h2>
 <p>You can export your workout history as a file from within the app at any time. Exported files are created on your device for your own use.</p>
