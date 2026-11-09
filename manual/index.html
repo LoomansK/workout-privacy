@@ -151,10 +151,10 @@
     .tbl td{border-bottom:none;padding:5px 14px}
     .tbl td:first-child{padding-top:10px}
     .tbl td:last-child{padding-bottom:10px}
-    /* Experience x Goal table: the stacked layout hides the header row, so
-       repeat each cell's goal above the program it belongs to */
-    .goal-tbl td[data-label]{padding-top:9px;padding-bottom:9px}
-    .goal-tbl td[data-label]::before{content:attr(data-label);display:block;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;line-height:1.25;color:var(--faint);margin-bottom:2px}
+    /* Stacked layout hides the header row, so every cell that carries a
+       data-label repeats its column header above its value */
+    .tbl td[data-label]{padding-top:9px;padding-bottom:9px}
+    .tbl td[data-label]::before{content:attr(data-label);display:block;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;line-height:1.25;color:var(--faint);margin-bottom:2px}
     /* The search bar wraps to two rows at this width and gets taller, so
        anchors need more clearance or headings/lede lines clip under it */
     section.chapter{scroll-margin-top:128px}
@@ -245,12 +245,12 @@
         <div class="tbl"><table>
           <thead><tr><th>Tab</th><th>What it does</th></tr></thead>
           <tbody>
-            <tr><td>Home tab</td><td>The main screen. Top to bottom: your workout counts, your Club Pass, your next workout, your program progress, your most recent personal record, your recent volume, and your last workouts. Start a workout here, or pick up a workout you left unfinished.</td></tr>
-            <tr><td>Exercise List</td><td>Not one of the five tabs — the in-session screen you land on when you start a workout. Each exercise for the session on its own card, with Stats, Notes, and Modify on every card; the four status labels, how weights are picked, logging and RIR, and swapping and supersets are covered in the Exercise List chapter.</td></tr>
-            <tr><td>Program tab</td><td>Shows your current program and its information. You can also change your program here by tapping the Change button. At the bottom is your next workouts and the ability to preview them.</td></tr>
-            <tr><td>Coach tab</td><td>Tap <strong>Get AI Overview</strong> for an AI summary of your training — volume balance, progression, recovery, and what's next. Your stalled lifts, your current pain flags, and your benchmark lift charts are also on the Coach tab.</td></tr>
-            <tr><td>History tab</td><td>Your workout history — and the source of truth for the whole app. Every finished workout and its information. Expand the workout card to see the details; delete a workout there and the workout is gone everywhere.</td></tr>
-            <tr><td>Settings tab</td><td>Your name, Notes for your coach, Goal, and Experience — all saved automatically — plus the Export Workout Data and Import Workout Data buttons and the Disclaimer card.</td></tr>
+            <tr><td>Home tab</td><td data-label="What it does">The main screen. Top to bottom: your workout counts, your Club Pass, your next workout, your program progress, your most recent personal record, your recent volume, and your last workouts. Start a workout here, or pick up a workout you left unfinished.</td></tr>
+            <tr><td>Exercise List</td><td data-label="What it does">Not one of the five tabs — the in-session screen you land on when you start a workout. Each exercise for the session on its own card, with Stats, Notes, and Modify on every card; the four status labels, how weights are picked, logging and RIR, and swapping and supersets are covered in the Exercise List chapter.</td></tr>
+            <tr><td>Program tab</td><td data-label="What it does">Shows your current program and its information. You can also change your program here by tapping the Change button. At the bottom is your next workouts and the ability to preview them.</td></tr>
+            <tr><td>Coach tab</td><td data-label="What it does">Tap <strong>Get AI Overview</strong> for an AI summary of your training — volume balance, progression, recovery, and what's next. Your stalled lifts, your current pain flags, and your benchmark lift charts are also on the Coach tab.</td></tr>
+            <tr><td>History tab</td><td data-label="What it does">Your workout history — and the source of truth for the whole app. Every finished workout and its information. Expand the workout card to see the details; delete a workout there and the workout is gone everywhere.</td></tr>
+            <tr><td>Settings tab</td><td data-label="What it does">Your name, Notes for your coach, Goal, and Experience — all saved automatically — plus the Export Workout Data and Import Workout Data buttons and the Disclaimer card.</td></tr>
           </tbody>
         </table></div>
       </section>
@@ -317,10 +317,10 @@
         <div class="tbl"><table>
           <thead><tr><th>Label</th><th>What it means</th><th>Who assigns it</th><th>What changes</th></tr></thead>
           <tbody>
-            <tr><td><span class="label y">RAMP-IN</span></td><td>An ease-back-in week after time away</td><td>The app, automatically</td><td>One fewer set per exercise, for that week</td></tr>
-            <tr><td><span class="label y">DELOAD</span></td><td>A planned lighter week in the program — or a one-time deload you applied</td><td>The program schedule, or you in the Coach tab</td><td>Weight cut 10% and volume cut about 40% for that week</td></tr>
-            <tr><td><span class="label y">PLATEAU</span></td><td>A stalled lift you chose to act on</td><td>The app detects the stall; you apply it in the Coach tab</td><td>That muscle group's weights cut 10% for the next workout</td></tr>
-            <tr><td><span class="label r">⚠ PF</span></td><td>An exercise that caused you pain</td><td>You — with “Mark With Pain Flag”</td><td>It stops being the program default; an alternate takes its slot</td></tr>
+            <tr><td><span class="label y">RAMP-IN</span></td><td data-label="What it means">An ease-back-in week after time away</td><td data-label="Who assigns it">The app, automatically</td><td data-label="What changes">One fewer set per exercise, for that week</td></tr>
+            <tr><td><span class="label y">DELOAD</span></td><td data-label="What it means">A planned lighter week in the program — or a one-time deload you applied</td><td data-label="Who assigns it">The program schedule, or you in the Coach tab</td><td data-label="What changes">Weight cut 10% and volume cut about 40% for that week</td></tr>
+            <tr><td><span class="label y">PLATEAU</span></td><td data-label="What it means">A stalled lift you chose to act on</td><td data-label="Who assigns it">The app detects the stall; you apply it in the Coach tab</td><td data-label="What changes">That muscle group's weights cut 10% for the next workout</td></tr>
+            <tr><td><span class="label r">⚠ PF</span></td><td data-label="What it means">An exercise that caused you pain</td><td data-label="Who assigns it">You — with “Mark With Pain Flag”</td><td data-label="What changes">It stops being the program default; an alternate takes its slot</td></tr>
           </tbody>
         </table></div>
         <p>This section is the full explanation of the four labels. The exact rule that triggers each one, how long it lasts, and how it ends are covered where each one is applied — <a href="#ramp-in">Ramp-in</a> and <a href="#deload">Deload</a> under Program, <a href="#plateau">Plateau</a> and <a href="#pain-flags">Pain flags</a> under Coach.</p>
@@ -415,16 +415,15 @@
         </ul>
         <p>The variant changes the sets, reps, and rest, not the split. In Size &amp; Strength, the A workouts focus on strength and the B workouts focus on size — except in PPL / Upper / Lower, where Push, Pull, and Legs focus on strength and Upper and Lower focus on size.</p>
         <h4>Changing your program yourself</h4>
-        <p>In the <strong>Program tab</strong>, the <strong>Change</strong> button opens <strong>Select Your Program</strong>, which lists every program and variant — you can filter the list by days per week — and switching is always your choice, never automatic.</p>
-        <h4>When the automatic pick happens — and when it stops</h4>
-        <p>After setup, Goal is otherwise used only in the Coach tab's “PROGRAM NOTE” box and as background for the AI Coach.</p>
+        <p>In the <strong>Program tab</strong>, the <strong>Change</strong> button on your current program card opens <strong>Select Your Program</strong>, which lists every program and variant — you can filter the list by days per week — and switching is always your choice, never automatic.</p>
+        <p>After setup, Goal is used only in the Coach tab's “PROGRAM NOTE” box and as background for the AI Coach.</p>
         <h4>Program resets</h4>
-        <p>If you switch back to a program you have used before, Titanrep asks whether to <strong>pick up where you left off</strong> — at the week you had reached — or <strong>start over at Week 1</strong>. Starting over records a program reset: week counting for that program restarts from that point, and your history is left unchanged. Resets are recorded against a workout date, and they are included in an export so a new phone counts your weeks the same way. See <a href="#export-import">Export &amp; Import</a>.</p>
+        <p>If you switch back to a program you have done before, Titanrep asks whether to <strong>pick up where you left off</strong> or <strong>start over at Week 1</strong>.</p>
         </div>
         <div class="sub">
           <h3 class="subhead" id="ramp-in">Ramp-in</h3>
           <p class="sub-lede">Ramp-in is a week of less volume. The app assigns it when you haven't lifted in more than seven days.</p>
-          <p>A ramp-in is Titanrep easing you back in after a break, instead of handing you the full workout your history says you were doing before the break.</p>
+          <p>A ramp-in is a gentler week — less volume than a normal week — for easing in, whether you're starting for the first time or coming back after time off.</p>
         <h4>The exact rule</h4>
         <ul>
           <li><strong>More than 7 days off triggers it. Exactly 7 days does not.</strong> The gap is measured between your actual workouts.</li>
@@ -472,10 +471,10 @@
         <div class="tbl"><table>
           <thead><tr><th>Benchmark lift</th><th>Why it is tracked</th></tr></thead>
           <tbody>
-            <tr><td>Smith Machine Squat</td><td>Lower-body strength benchmark</td></tr>
-            <tr><td>Hammer Strength Iso-Lateral Horizontal Bench Press</td><td>Pressing strength benchmark</td></tr>
-            <tr><td>Smith Machine Romanian Deadlift</td><td>Hinge strength benchmark</td></tr>
-            <tr><td>Seated Dumbbell Shoulder Press</td><td>Overhead strength benchmark</td></tr>
+            <tr><td>Smith Machine Squat</td><td data-label="Why it is tracked">Lower-body strength benchmark</td></tr>
+            <tr><td>Hammer Strength Iso-Lateral Horizontal Bench Press</td><td data-label="Why it is tracked">Pressing strength benchmark</td></tr>
+            <tr><td>Smith Machine Romanian Deadlift</td><td data-label="Why it is tracked">Hinge strength benchmark</td></tr>
+            <tr><td>Seated Dumbbell Shoulder Press</td><td data-label="Why it is tracked">Overhead strength benchmark</td></tr>
           </tbody>
         </table></div>
         <p>The Benchmark lifts card is <strong>collapsed by default</strong> — tap its chevron to open it. Chart labels are anchored inside the chart, so the first and last weights and dates are never cut off.</p>
@@ -584,9 +583,9 @@
         <div class="tbl"><table>
           <thead><tr><th>Plan</th><th>Price</th><th>Free trial</th></tr></thead>
           <tbody>
-            <tr><td>Monthly</td><td>$4.99 / month</td><td>7 days free</td></tr>
-            <tr><td>Annual</td><td>$29.99 / year</td><td>7 days free</td></tr>
-            <tr><td>Lifetime</td><td>$89.99 one-time</td><td>No trial — it is a one-time purchase, not a subscription</td></tr>
+            <tr><td>Monthly</td><td data-label="Price">$4.99 / month</td><td data-label="Free trial">7 days free</td></tr>
+            <tr><td>Annual</td><td data-label="Price">$29.99 / year</td><td data-label="Free trial">7 days free</td></tr>
+            <tr><td>Lifetime</td><td data-label="Price">$89.99 one-time</td><td data-label="Free trial">No trial — it is a one-time purchase, not a subscription</td></tr>
           </tbody>
         </table></div>
         <h4>The upgrade-only rule</h4>
