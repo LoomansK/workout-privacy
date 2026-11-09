@@ -73,10 +73,11 @@
   main{min-width:0}
   section.chapter{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px 28px 24px;margin-bottom:18px;scroll-margin-top:86px}
   section.chapter.hidden{display:none}
-  .ch-head{display:flex;gap:14px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:18px}
+  .ch-head{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:18px}
+  .ch-head>div{display:contents}
   .ch-num{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:600;background:var(--ink);color:var(--bg);border-radius:7px;padding:5px 7px;line-height:1;margin-top:5px;flex:none}
-  .ch-head h2{font-family:"Barlow Condensed",sans-serif;font-size:34px;line-height:.95;text-transform:uppercase;letter-spacing:.01em;margin:0;font-weight:700}
-  .ch-head p{margin:6px 0 0;color:var(--muted);font-size:15.5px;line-height:1.5;max-width:620px}
+  .ch-head h2{font-family:"Barlow Condensed",sans-serif;font-size:34px;line-height:.95;text-transform:uppercase;letter-spacing:.01em;margin:0;font-weight:700;flex:1}
+  .ch-head p{flex:0 0 100%;margin:0;color:var(--ink);font-size:16.5px;line-height:1.6;max-width:none;text-align:left}
   h3{font-size:17px;margin:22px 0 8px;line-height:1.3}
   h3:first-of-type{margin-top:4px}
   p{margin:0 0 12px}
@@ -226,7 +227,7 @@
           <li><strong>The 7-day question</strong> — required. “Have you lifted weights in the last 7 days?” Your answer sets whether your first week is a ramp-in week: if you have lifted in the last 7 days, your first week is not a ramp-in week; if you have not lifted in the last 7 days, your first week is a ramp-in week. The answer is only used once, if you have no workout history at all. See <a href="#ramp-in">Ramp-in</a>.</li>
         </ul>
         <p>Save stays disabled until Goal, Experience, and the 7-day question are all picked. Name and Notes do not block Save.</p>
-        <p>On the Setup page, the program updates the moment you tap a different Experience or Goal, and Save applies it. That automatic picking <strong>only runs before you have visited either the Home tab or the Program tab</strong>. Once you have visited either one, your program stays put — changing Goal or Experience later does not silently replace it.</p>
+        <p>When you tap Save, a program is chosen for you based on your Goal and Experience. That automatic picking <strong>only runs before you have visited either the Home tab or the Program tab</strong>. Once you have visited either one, your program stays put — changing Goal or Experience later does not silently replace it.</p>
         <p><strong>Setup is not Settings.</strong> After that first Save, the same information lives in the <strong>Settings tab</strong>. There is no Save button there — Name, Notes, Goal, and Experience save automatically as you change them, with a “Saved ✓” indicator. See <a href="#settings">Settings &amp; profile</a>.</p>
       </section>
 
@@ -247,8 +248,33 @@
       </section>
 
       <!-- 3 -->
-      <section class="chapter" id="home" data-search="home tab next workout club pass start workout continue unfinished progress labels ramp-in deload plateau pain flag pr yellow red notes status">
+      <section class="chapter" id="home" data-search="home tab next workout club pass start workout continue unfinished progress cycle week ring stats greeting view workout">
         <div class="ch-head"><span class="ch-num">03</span><div><h2>Home</h2><p>The main screen. Your next workout, your program progress, and your Club Pass. Start a workout here, or pick up a workout you left unfinished.</p></div></div>
+        <div class="sub">
+          <h3 class="subhead" id="next-workout">Your next workout</h3>
+          <p class="sub-lede">The next workout in your program, ready to preview or start.</p>
+          <p>The Home tab shows a card for your next workout, with the workout's title on it. <strong>View Workout</strong> lets you look through the workout before you start it. <strong>Start Workout</strong> begins the workout and takes you to the Exercise List for that session.</p>
+        </div>
+        <div class="sub">
+          <h3 class="subhead" id="program-progress">Current Program Progress</h3>
+          <p class="sub-lede">Where you are in your current program.</p>
+          <p><strong>Current Program Progress</strong> shows your current cycle and week, with a ring showing your progress through the cycle. Every program runs in 12-week cycles — see <a href="#programs">Your program</a>.</p>
+        </div>
+        <div class="sub">
+          <h3 class="subhead" id="club-pass">Club Pass</h3>
+          <p class="sub-lede">Your pass for gym check-in, opened from the Home tab.</p>
+          <p>Your <strong>Club Pass</strong> is on the Home tab. It is a QR code for gym check-in, and your name appears on it. Your name and Club Pass number are stored on the phone itself — see <a href="#settings">Settings &amp; profile</a>.</p>
+        </div>
+        <div class="sub">
+          <h3 class="subhead" id="continue-workout">Continue Workout</h3>
+          <p class="sub-lede">Pick up a workout you left unfinished.</p>
+          <p>When a workout is in progress, the Home tab shows <strong>Continue Workout</strong>. Tapping it brings the workout back with the sets you already logged intact. See <a href="#logging">Logging &amp; RIR</a>.</p>
+        </div>
+        <div class="sub">
+          <h3 class="subhead" id="home-stats">Stats</h3>
+          <p class="sub-lede">A compact summary of your training, on the Home tab.</p>
+          <p>The Home tab also shows a compact set of stats summarizing your training so far, so you can see where you stand without leaving the main screen.</p>
+        </div>
       </section>
 
       <!-- 4 -->
