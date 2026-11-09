@@ -151,6 +151,14 @@
     .tbl td{border-bottom:none;padding:5px 14px}
     .tbl td:first-child{padding-top:10px}
     .tbl td:last-child{padding-bottom:10px}
+    /* Experience x Goal table: the stacked layout hides the header row, so
+       repeat each cell's goal above the program it belongs to */
+    .goal-tbl td[data-label]{padding-top:9px;padding-bottom:9px}
+    .goal-tbl td[data-label]::before{content:attr(data-label);display:block;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;line-height:1.25;color:var(--faint);margin-bottom:2px}
+    /* The search bar wraps to two rows at this width and gets taller, so
+       anchors need more clearance or headings/lede lines clip under it */
+    section.chapter{scroll-margin-top:128px}
+    h3.subhead{scroll-margin-top:128px}
   }
   @media print{
     .searchbar,nav.toc,.quick{display:none!important}
@@ -372,12 +380,12 @@
           <h3 class="subhead" id="programs">Your program</h3>
           <p class="sub-lede">Here is the full table.</p>
           <p>On the first-time Setup page, Titanrep picks your program from the two answers you gave — Experience and Goal, together:</p>
-        <div class="tbl"><table>
+        <div class="tbl goal-tbl"><table>
           <thead><tr><th>Experience</th><th>Build Strength</th><th>Build Muscle</th><th>Both</th></tr></thead>
           <tbody>
-            <tr><td>Beginner</td><td>Full Body</td><td>Full Body</td><td>Full Body</td></tr>
-            <tr><td>Intermediate</td><td>Upper / Lower Strength</td><td>Upper / Lower Size</td><td>Upper / Lower Size &amp; Strength</td></tr>
-            <tr><td>Advanced</td><td>PPL Strength</td><td>PPL Size</td><td>PPL Size &amp; Strength</td></tr>
+            <tr><td>Beginner</td><td data-label="Build Strength">Full Body</td><td data-label="Build Muscle">Full Body</td><td data-label="Both">Full Body</td></tr>
+            <tr><td>Intermediate</td><td data-label="Build Strength">Upper / Lower Strength</td><td data-label="Build Muscle">Upper / Lower Size</td><td data-label="Both">Upper / Lower Size &amp; Strength</td></tr>
+            <tr><td>Advanced</td><td data-label="Build Strength">PPL Strength</td><td data-label="Build Muscle">PPL Size</td><td data-label="Both">PPL Size &amp; Strength</td></tr>
           </tbody>
         </table></div>
         <ul>
