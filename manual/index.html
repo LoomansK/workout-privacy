@@ -86,6 +86,11 @@
   .small{font-size:14px;color:var(--muted)}
   strong{font-weight:700}
   code{font-family:"JetBrains Mono",monospace;font-size:.86em;background:var(--surface2);border:1px solid var(--line);padding:1px 5px;border-radius:6px}
+  h4{font-size:16.5px;margin:20px 0 6px;line-height:1.3}
+  .sub{border-top:1px solid var(--line);margin-top:28px;padding-top:22px}
+  .ch-head + .sub{border-top:none;margin-top:2px;padding-top:0}
+  h3.subhead{font-family:"Barlow Condensed",sans-serif;font-size:26px;line-height:1;text-transform:uppercase;letter-spacing:.01em;margin:0 0 6px;font-weight:700;scroll-margin-top:86px}
+  .sub-lede{color:var(--muted);font-size:15.5px;line-height:1.5;margin:0 0 14px;max-width:620px}
 
   .callout{border-radius:12px;padding:14px 16px;margin:16px 0;font-size:15px;line-height:1.55}
   .callout p:last-child{margin-bottom:0}
@@ -190,21 +195,12 @@
       <ol id="tocList">
         <li><a href="#getting-started">Getting started</a></li>
         <li><a href="#tabs">The five tabs</a></li>
-        <li><a href="#programs">Your program</a></li>
-        <li><a href="#exercise-cards">Exercise cards</a></li>
-        <li><a href="#weights">How weights are picked</a></li>
-        <li><a href="#logging">Logging &amp; RIR</a></li>
-        <li><a href="#status-labels">The four status labels</a></li>
-        <li><a href="#ramp-in">Ramp-in</a></li>
-        <li><a href="#deload">Deload</a></li>
-        <li><a href="#plateau">Plateau</a></li>
-        <li><a href="#pain-flags">Pain flags</a></li>
-        <li><a href="#onerm">Estimated 1RM</a></li>
-        <li><a href="#swapping">Swapping &amp; supersets</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#exercise-list">Exercise List page</a></li>
+        <li><a href="#program">Program</a></li>
+        <li><a href="#coach">Coach</a></li>
         <li><a href="#history">History</a></li>
-        <li><a href="#export-import">Export &amp; Import</a></li>
-        <li><a href="#premium">Premium &amp; paywall</a></li>
-        <li><a href="#settings">Settings &amp; profile</a></li>
+        <li><a href="#settings-tab">Settings</a></li>
         <li><a href="#faq">Questions &amp; answers</a></li>
       </ol>
     </nav>
@@ -253,9 +249,90 @@
       </section>
 
       <!-- 3 -->
-      <section class="chapter" id="programs" data-search="programs ppl push pull legs upper lower full body strength size split experience goal">
-        <div class="ch-head"><span class="ch-num">03</span><div><h2>Your program</h2><p>Your program is picked from Experience and Goal together — here is the full table.</p></div></div>
-        <p>On the first-time Setup page, Titanrep picks your program from the two answers you gave — Experience and Goal, together:</p>
+      <section class="chapter" id="home" data-search="home tab next workout club pass start workout continue unfinished progress labels ramp-in deload plateau pain flag pr yellow red notes status">
+        <div class="ch-head"><span class="ch-num">03</span><div><h2>Home</h2><p>The main screen. Your next workout, your program progress, and your Club Pass. Start a workout here, or pick up a workout you left unfinished.</p></div></div>
+        <div class="sub">
+          <h3 class="subhead" id="status-labels">The four status labels</h3>
+          <p class="sub-lede">Ramp-in, deload, plateau, and pain flag — what each means, who assigns it, and where you see it.</p>
+          <p>Four conditions can attach to an exercise or a week. Each one is explained in text in the exercise's <strong>Notes</strong>, and each one shows as a <strong>label</strong>: ramp-in and deload appear as the week label on the Home tab while that week is current, and in History every label appears as a pill next to the workout's title on its History card. Ramp-in, deload, and plateau pills are yellow; the pain flag pill is red. History also shows a yellow <span class="label y">★ PR</span> pill on any workout where a set beat that exercise's previous best.</p>
+        <div class="tbl"><table>
+          <thead><tr><th>Label</th><th>What it means</th><th>Who assigns it</th><th>What changes</th></tr></thead>
+          <tbody>
+            <tr><td><span class="label y">RAMP-IN</span></td><td>An ease-back-in week after time away</td><td>The app, automatically</td><td>One fewer set per exercise, for that week</td></tr>
+            <tr><td><span class="label y">DELOAD</span></td><td>A planned lighter week in the program — or a one-time deload you applied</td><td>The program schedule, or you in the Coach tab</td><td>Weight cut 10% and volume cut about 40% for that week</td></tr>
+            <tr><td><span class="label y">PLATEAU</span></td><td>A stalled lift you chose to act on</td><td>The app detects the stall; you apply it in the Coach tab</td><td>That muscle group's weights cut 10% for the next workout</td></tr>
+            <tr><td><span class="label r">⚠ PF</span></td><td>An exercise that bothered you</td><td>You — with “Mark With Pain Flag”</td><td>It stops being the program default; an alternate takes its slot</td></tr>
+          </tbody>
+        </table></div>
+        <p>Each one is taken in full later in this manual — <a href="#ramp-in">Ramp-in</a> and <a href="#deload">Deload</a> under Program, <a href="#plateau">Plateau</a> and <a href="#pain-flags">Pain flags</a> under Coach: the exact rule that triggers it, how long it lasts, and how it ends.</p>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section class="chapter" id="exercise-list" data-search="exercise list page in-session session no tabs workout exercise cards stats notes modify tempo pro tip form cues target last time swap alternative eccentric concentric strength trend sessions best set estimated 1rm weights prescribed target how much weight history cap 600 dumbbell numbers from last time logging sets reps rir reps in reserve rest timer workout continue resume swap alternate alternatives modify default exercise slot superset pair">
+        <div class="ch-head"><span class="ch-num">04</span><div><h2>Exercise List page</h2><p>When you start a workout, you land on the exercise list page — the in-session screen, which has no tabs. Each exercise for the session appears on its own card here.</p></div></div>
+        <div class="sub">
+          <h3 class="subhead" id="exercise-cards">Exercise cards</h3>
+          <p class="sub-lede">Each exercise in a workout has its own card, with Stats, Notes, and Modify buttons.</p>
+          <p>When you start a workout, each exercise for the session appears on its own card on the exercise list page. Each card has three buttons — Stats, Notes, and Modify — for that exercise.</p>
+        <h4>Stats</h4>
+        <p>The <strong>Stats</strong> button opens a stats view for that exercise, with a <strong>Close</strong> button at the top left. The stats view shows how many sessions you have logged for the exercise, your best set, and your best estimated 1RM. Compound lifts also show a strength trend — your best weight per session — and every exercise shows a chart of your top set weight per session and a list of every session with the sets you logged.</p>
+        <h4>Notes</h4>
+        <p>The <strong>Notes</strong> button opens the exercise's Notes. The Notes show the Pro Tip form cues, the Target weight and reps, the Tempo, what you did Last time, and any status explanation — for example a ramp-in, deload, plateau, or pain flag explanation when one applies to that exercise.</p>
+        <p>Tempo is shown in the Notes. The tempo is set per workout, so every exercise in the same workout uses the same tempo. Size workouts use “3-second eccentric, explosive concentric”. Strength workouts use “2-3 second eccentric, maximal-intent explosive concentric”. In the Size &amp; Strength programs, the strength workouts use the strength tempo and the size workouts use the size tempo; the Phases programs use the size tempo. Full Body uses “2-second eccentric, 1-second concentric”.</p>
+        <h4>Modify</h4>
+        <p>The <strong>Modify</strong> button lets you swap the exercise in that slot for an alternative. Your pick becomes the slot's exercise going forward — for this workout and every workout after — until you change the pick in Modify again. See <a href="#swapping">Swapping &amp; supersets</a> for how swaps and alternatives work.</p>
+        </div>
+        <div class="sub">
+          <h3 class="subhead" id="weights">How weights are picked</h3>
+          <p class="sub-lede">The target on each exercise card comes from that exercise's own history — all of it.</p>
+          <p>The weight pre-filled on an exercise card — the numbers from last time, carried forward and adjusted — is not a generic chart. It is worked out per exercise from your own logged history, across every workout you have logged, not just workouts in your current program. After each finished workout, the app decides that exercise's next target:</p>
+        <ul>
+          <li><strong>Hit every planned set at the target reps → the weight goes up.</strong> The increase is a percentage of the weight you used: on compound lifts, 2.5% at 200 lb and above, 5% below that; on isolation lifts, 10% up to 20 lb, 7.5% up to 40 lb, and 5% above that. An increase is at least 5 lb, and every target is rounded to the nearest 2.5 lb.</li>
+          <li><strong>Hit every set, but every set was RIR 0 → the weight holds.</strong> All-out grinders earn you another week at the same weight to own it, instead of an increase.</li>
+          <li><strong>Miss the rep target → the weight holds.</strong> Same weight next time, until every planned set hits the target reps.</li>
+          <li><strong>You lowered the weight yourself → that lower weight becomes the target.</strong> Whether or not you hit the reps at the decreased weight, the app keeps it for next time rather than jumping back up.</li>
+          <li><strong>Deload weeks are skipped.</strong> A deload workout never changes the next normal week's target — the week after a deload picks up from the last normal week before it.</li>
+          <li><strong>First time on an exercise.</strong> If you have done the exercise before, the target is converted from your best logged set on it. If you have never done it, the target is estimated from your best exercise for the same muscle, at 90% — the card's note says “Target from your … work — first time on this lift, so adjust after the first set”.</li>
+          <li><strong>Safety cap.</strong> Every prescribed weight is capped at <strong>600 lb</strong> — and at <strong>75 lb</strong> for dumbbell exercises. If an increase would pass the cap, the target holds at the cap.</li>
+          <li><strong>History is the source of truth.</strong> Personal records, stall checks, and targets are all worked out from your full history. If a workout is deleted from History, nothing from it counts anymore — not toward targets, records, or anything else in the app.</li>
+        </ul>
+        <p>Two things change the target for a single week without changing the progression itself: a <a href="#deload">deload</a> (scheduled, or one you apply from the Coach tab) cuts the displayed weight 10% for that workout, and a <a href="#ramp-in">ramp-in</a> week takes a set away but leaves the weight alone.</p>
+        <div class="callout orange"><span class="ct">Estimated 1RM does not set your weight</span><p>The estimated 1RM shown under the Target line is display only. It never feeds back into how your weights are prescribed. See <a href="#onerm">Estimated 1RM</a>.</p></div>
+        </div>
+        <div class="sub">
+          <h3 class="subhead" id="logging">Logging &amp; RIR</h3>
+          <p class="sub-lede">How a set is saved, what RIR means, and what “Continue Workout” does and does not restore.</p>
+          <h4>Logging a set</h4>
+        <p>A set is written and saved at the moment you log it — not at the end of the workout. After you log a set, the rest timer screen opens, where weight, reps, and RIR for that set can all be adjusted together; the set summary screen can adjust them too. Both screens save everything, including RIR.</p>
+        <p>If you leave mid-workout, <strong>Continue Workout</strong> brings the workout back with the sets you already logged intact.</p>
+        <h4>RIR — Reps in Reserve</h4>
+        <p><strong>RIR is how many more reps you could have done when you stopped the set.</strong> Stopped with nothing left: RIR 0. Could have done two more: RIR 2. You log it per set, alongside weight and reps, by tapping <strong>0, 1, 2, 3, 4, or 4+</strong> on the rest timer or set summary screen. Tap the same number again to clear it. In a superset, each exercise gets its own RIR.</p>
+        <ul>
+          <li>RIR is how Titanrep judges effort. The same weight at RIR 1 is a harder set than at RIR 3, and your history keeps the difference.</li>
+          <li><strong>All-grinder rule:</strong> if you hit every planned set but every set was RIR 0, the weight holds next time instead of going up — see <a href="#weights">How weights are picked</a>.</li>
+          <li>RIR shows in the History tab on any set that has a value.</li>
+          <li>Your average RIR is shown on the Coach tab in the “Stalled lifts” card, because a stall at low RIR means something different from a stall at high RIR — see <a href="#plateau">Plateau</a>. A stall is only flagged when the sets have RIR logged; without RIR values, the app cannot tell which kind of stall it is.</li>
+        </ul>
+        </div>
+        <div class="sub">
+          <h3 class="subhead" id="swapping">Swapping &amp; supersets</h3>
+          <p class="sub-lede">Every slot has a default and at least three alternatives. Supersets keep both exercises' sets.</p>
+          <h4>Alternatives for every slot</h4>
+        <p>Every exercise that appears as a program default has <strong>at least 3 alternatives</strong> in its swap list. Tapping <strong>Modify</strong> on an exercise card opens the slot's alternatives — each alternate shows its own target weight, worked out from your history with that exercise. Your pick becomes the slot's exercise going forward — tonight and every workout after — until you change the pick in Modify again, and picking the program default restores the default. If you swap after logging sets for the exercise in the slot, the logged sets are cleared, because the logged sets were a different movement. A pain flag is the one automatic change: a flagged default is substituted with an alternate on its own (see <a href="#pain-flags">Pain flags</a>). A pick is recorded with the workout in which you made the pick, so deleting that workout from History removes the pick.</p>
+        <p>Each exercise also has a photo, coaching cues, and a muscle diagram. On the diagram, a Primary / Secondary key is overlaid on the image, showing which muscles are primary and which are secondary for that exercise. The Muscles slide for an exercise — including Hanging Knee Raise and Dead Bug — shows its registered diagram.</p>
+        <h4>Supersets</h4>
+        <p>In a superset, two exercises are paired and performed back to back. Both exercises are full exercises in their own right: each keeps its own sets, reps, weight, targets, and RIR when you log them, in History, and in an export. Exporting a superset exports the second exercise as its own entry — its sets are never dropped or folded into the first exercise.</p>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section class="chapter" id="program" data-search="program tab change program preview next workouts programs ppl push pull legs upper lower full body strength size split experience goal ramp-in ramp in break time off gap seven days week one fewer set deload lighter week scheduled volume recovery week">
+        <div class="ch-head"><span class="ch-num">05</span><div><h2>Program</h2><p>Shows your current program and its information. You can also change your program here by tapping the Change button. At the bottom is your next workouts and the ability to preview them.</p></div></div>
+        <div class="sub">
+          <h3 class="subhead" id="programs">Your program</h3>
+          <p class="sub-lede">Your program is picked from Experience and Goal together — here is the full table.</p>
+          <p>On the first-time Setup page, Titanrep picks your program from the two answers you gave — Experience and Goal, together:</p>
         <div class="tbl"><table>
           <thead><tr><th>Experience</th><th>Build Strength</th><th>Build Muscle</th><th>Both</th></tr></thead>
           <tbody>
@@ -271,86 +348,22 @@
           <li><strong>Strength, Size, Size &amp; Strength</strong> — the variant changes the sets, reps, and rest, not the split. In the Size &amp; Strength variants of Push / Pull / Legs and Upper / Lower, the A workouts focus on strength and the B workouts focus on size; in PPL / Upper / Lower Size &amp; Strength, Push, Pull, and Legs focus on strength and Upper and Lower focus on size.</li>
           <li>Every program runs in <strong>12-week cycles</strong>. When a cycle ends, the next one begins, and your weights carry over.</li>
         </ul>
-        <h3>Changing your program yourself</h3>
+        <h4>Changing your program yourself</h4>
         <p>The Setup pick is only a starting point. In the <strong>Program tab</strong>, the <strong>Change</strong> button opens <strong>Select Your Program</strong>, which lists every program and variant — you can filter the list by days per week — and switching is always your choice, never automatic. Two more options appear there that Setup never picks for you:</p>
         <ul>
           <li><strong>PPL / Upper / Lower</strong> — the 5-day program (Push, Pull, Legs, Upper, Lower), in Strength, Size, Size &amp; Strength, and Phases variants.</li>
           <li><strong>Size &amp; Strength Phases</strong> — a variant of Push / Pull / Legs, Upper / Lower, and PPL / Upper / Lower where the rep targets change every 4 weeks: Phase 1 emphasizes size, Phase 2 blends size and strength, Phase 3 emphasizes strength — three phases per 12-week cycle. Starting weights for each new phase are worked out from your logged sets.</li>
         </ul>
-        <h3>When the automatic pick happens — and when it stops</h3>
+        <h4>When the automatic pick happens — and when it stops</h4>
         <p>After setup, Goal is otherwise used only in the Coach tab's “PROGRAM NOTE” box and as background for the AI Coach.</p>
-        <h3>Program resets</h3>
+        <h4>Program resets</h4>
         <p>If you switch back to a program you have used before, Titanrep asks whether to <strong>pick up where you left off</strong> — at the week you had reached — or <strong>start over at Week 1</strong>. Starting over records a program reset: week counting for that program restarts from that point, and your history is left unchanged. Resets are recorded against a workout date, and they are included in an export so a new phone counts your weeks the same way. See <a href="#export-import">Export &amp; Import</a>.</p>
-      </section>
-
-      <!-- 4 -->
-      <section class="chapter" id="exercise-cards" data-search="exercise cards stats notes modify tempo pro tip form cues target last time swap alternative eccentric concentric strength trend sessions best set estimated 1rm">
-        <div class="ch-head"><span class="ch-num">04</span><div><h2>Exercise cards</h2><p>Each exercise in a workout has its own card, with Stats, Notes, and Modify buttons.</p></div></div>
-        <p>When you start a workout, each exercise for the session appears on its own card on the exercise list page. Each card has three buttons — Stats, Notes, and Modify — for that exercise.</p>
-        <h3>Stats</h3>
-        <p>The <strong>Stats</strong> button opens a stats view for that exercise, with a <strong>Close</strong> button at the top left. The stats view shows how many sessions you have logged for the exercise, your best set, and your best estimated 1RM. Compound lifts also show a strength trend — your best weight per session — and every exercise shows a chart of your top set weight per session and a list of every session with the sets you logged.</p>
-        <h3>Notes</h3>
-        <p>The <strong>Notes</strong> button opens the exercise's Notes. The Notes show the Pro Tip form cues, the Target weight and reps, the Tempo, what you did Last time, and any status explanation — for example a ramp-in, deload, plateau, or pain flag explanation when one applies to that exercise.</p>
-        <p>Tempo is shown in the Notes. The tempo is set per workout, so every exercise in the same workout uses the same tempo. Size workouts use “3-second eccentric, explosive concentric”. Strength workouts use “2-3 second eccentric, maximal-intent explosive concentric”. In the Size &amp; Strength programs, the strength workouts use the strength tempo and the size workouts use the size tempo; the Phases programs use the size tempo. Full Body uses “2-second eccentric, 1-second concentric”.</p>
-        <h3>Modify</h3>
-        <p>The <strong>Modify</strong> button lets you swap the exercise in that slot for an alternative. Your pick becomes the slot's exercise going forward — for this workout and every workout after — until you change the pick in Modify again. See <a href="#swapping">Swapping &amp; supersets</a> for how swaps and alternatives work.</p>
-      </section>
-
-      <!-- 5 -->
-      <section class="chapter" id="weights" data-search="weights prescribed target how much weight history cap 600 dumbbell numbers from last time">
-        <div class="ch-head"><span class="ch-num">05</span><div><h2>How weights are picked</h2><p>The target on each exercise card comes from that exercise's own history — all of it.</p></div></div>
-        <p>The weight pre-filled on an exercise card — the numbers from last time, carried forward and adjusted — is not a generic chart. It is worked out per exercise from your own logged history, across every workout you have logged, not just workouts in your current program. After each finished workout, the app decides that exercise's next target:</p>
-        <ul>
-          <li><strong>Hit every planned set at the target reps → the weight goes up.</strong> The increase is a percentage of the weight you used: on compound lifts, 2.5% at 200 lb and above, 5% below that; on isolation lifts, 10% up to 20 lb, 7.5% up to 40 lb, and 5% above that. An increase is at least 5 lb, and every target is rounded to the nearest 2.5 lb.</li>
-          <li><strong>Hit every set, but every set was RIR 0 → the weight holds.</strong> All-out grinders earn you another week at the same weight to own it, instead of an increase.</li>
-          <li><strong>Miss the rep target → the weight holds.</strong> Same weight next time, until every planned set hits the target reps.</li>
-          <li><strong>You lowered the weight yourself → that lower weight becomes the target.</strong> Whether or not you hit the reps at the decreased weight, the app keeps it for next time rather than jumping back up.</li>
-          <li><strong>Deload weeks are skipped.</strong> A deload workout never changes the next normal week's target — the week after a deload picks up from the last normal week before it.</li>
-          <li><strong>First time on an exercise.</strong> If you have done the exercise before, the target is converted from your best logged set on it. If you have never done it, the target is estimated from your best exercise for the same muscle, at 90% — the card's note says “Target from your … work — first time on this lift, so adjust after the first set”.</li>
-          <li><strong>Safety cap.</strong> Every prescribed weight is capped at <strong>600 lb</strong> — and at <strong>75 lb</strong> for dumbbell exercises. If an increase would pass the cap, the target holds at the cap.</li>
-          <li><strong>History is the source of truth.</strong> Personal records, stall checks, and targets are all worked out from your full history. If a workout is deleted from History, nothing from it counts anymore — not toward targets, records, or anything else in the app.</li>
-        </ul>
-        <p>Two things change the target for a single week without changing the progression itself: a <a href="#deload">deload</a> (scheduled, or one you apply from the Coach tab) cuts the displayed weight 10% for that workout, and a <a href="#ramp-in">ramp-in</a> week takes a set away but leaves the weight alone.</p>
-        <div class="callout orange"><span class="ct">Estimated 1RM does not set your weight</span><p>The estimated 1RM shown under the Target line is display only. It never feeds back into how your weights are prescribed. See <a href="#onerm">Estimated 1RM</a>.</p></div>
-      </section>
-
-      <!-- 6 -->
-      <section class="chapter" id="logging" data-search="logging sets reps rir reps in reserve rest timer workout continue resume">
-        <div class="ch-head"><span class="ch-num">06</span><div><h2>Logging &amp; RIR</h2><p>How a set is saved, what RIR means, and what “Continue Workout” does and does not restore.</p></div></div>
-        <h3>Logging a set</h3>
-        <p>A set is written and saved at the moment you log it — not at the end of the workout. After you log a set, the rest timer screen opens, where weight, reps, and RIR for that set can all be adjusted together; the set summary screen can adjust them too. Both screens save everything, including RIR.</p>
-        <p>If you leave mid-workout, <strong>Continue Workout</strong> brings the workout back with the sets you already logged intact.</p>
-        <h3>RIR — Reps in Reserve</h3>
-        <p><strong>RIR is how many more reps you could have done when you stopped the set.</strong> Stopped with nothing left: RIR 0. Could have done two more: RIR 2. You log it per set, alongside weight and reps, by tapping <strong>0, 1, 2, 3, 4, or 4+</strong> on the rest timer or set summary screen. Tap the same number again to clear it. In a superset, each exercise gets its own RIR.</p>
-        <ul>
-          <li>RIR is how Titanrep judges effort. The same weight at RIR 1 is a harder set than at RIR 3, and your history keeps the difference.</li>
-          <li><strong>All-grinder rule:</strong> if you hit every planned set but every set was RIR 0, the weight holds next time instead of going up — see <a href="#weights">How weights are picked</a>.</li>
-          <li>RIR shows in the History tab on any set that has a value.</li>
-          <li>Your average RIR is shown on the Coach tab in the “Stalled lifts” card, because a stall at low RIR means something different from a stall at high RIR — see <a href="#plateau">Plateau</a>. A stall is only flagged when the sets have RIR logged; without RIR values, the app cannot tell which kind of stall it is.</li>
-        </ul>
-      </section>
-
-      <!-- 7 -->
-      <section class="chapter" id="status-labels" data-search="labels ramp-in deload plateau pain flag pr yellow red notes status">
-        <div class="ch-head"><span class="ch-num">07</span><div><h2>The four status labels</h2><p>Ramp-in, deload, plateau, and pain flag — what each means, who assigns it, and where you see it.</p></div></div>
-        <p>Four conditions can attach to an exercise or a week. Each one is explained in text in the exercise's <strong>Notes</strong>, and each one shows as a <strong>label</strong>: ramp-in and deload appear as the week label on the Home tab while that week is current, and in History every label appears as a pill next to the workout's title on its History card. Ramp-in, deload, and plateau pills are yellow; the pain flag pill is red. History also shows a yellow <span class="label y">★ PR</span> pill on any workout where a set beat that exercise's previous best.</p>
-        <div class="tbl"><table>
-          <thead><tr><th>Label</th><th>What it means</th><th>Who assigns it</th><th>What changes</th></tr></thead>
-          <tbody>
-            <tr><td><span class="label y">RAMP-IN</span></td><td>An ease-back-in week after time away</td><td>The app, automatically</td><td>One fewer set per exercise, for that week</td></tr>
-            <tr><td><span class="label y">DELOAD</span></td><td>A planned lighter week in the program — or a one-time deload you applied</td><td>The program schedule, or you in the Coach tab</td><td>Weight cut 10% and volume cut about 40% for that week</td></tr>
-            <tr><td><span class="label y">PLATEAU</span></td><td>A stalled lift you chose to act on</td><td>The app detects the stall; you apply it in the Coach tab</td><td>That muscle group's weights cut 10% for the next workout</td></tr>
-            <tr><td><span class="label r">⚠ PF</span></td><td>An exercise that bothered you</td><td>You — with “Mark With Pain Flag”</td><td>It stops being the program default; an alternate takes its slot</td></tr>
-          </tbody>
-        </table></div>
-        <p>The next four chapters take each one in full: the exact rule that triggers it, how long it lasts, and how it ends.</p>
-      </section>
-
-      <!-- 8 -->
-      <section class="chapter" id="ramp-in" data-search="ramp-in ramp in break time off gap seven days week one fewer set">
-        <div class="ch-head"><span class="ch-num">08</span><div><h2>Ramp-in</h2><p>What it is: a gentler first week back. When the app assigns it: after more than 7 days away.</p></div></div>
-        <p>A ramp-in is Titanrep easing you back in after a break, instead of handing you the full workout your history says you were doing before the break.</p>
-        <h3>The exact rule</h3>
+        </div>
+        <div class="sub">
+          <h3 class="subhead" id="ramp-in">Ramp-in</h3>
+          <p class="sub-lede">What it is: a gentler first week back. When the app assigns it: after more than 7 days away.</p>
+          <p>A ramp-in is Titanrep easing you back in after a break, instead of handing you the full workout your history says you were doing before the break.</p>
+        <h4>The exact rule</h4>
         <ul>
           <li><strong>More than 7 days off triggers it. Exactly 7 days does not.</strong> The gap is measured between your actual workouts.</li>
           <li>It applies in two situations: <strong>week 1 of a cycle</strong>, when the gap before that cycle's first workout was more than 7 days (or there is no earlier workout), and <strong>any week you return</strong> whose first workout follows a gap of more than 7 days. It is about the gap, not the schedule.</li>
@@ -358,81 +371,41 @@
           <li>During that week, every exercise has <strong>one fewer set</strong> (an exercise never drops below 1 set). The weight is not cut — the exercise's Notes say you can adjust the weight if necessary. Ramp-in cuts a set, not the weight.</li>
           <li>Ramp-in applies on the cycle-based programs. The Phases variants do not use it — a new phase instead sets fresh starting weights from your logged sets.</li>
         </ul>
-        <h3>If you have never logged a workout</h3>
+        <h4>If you have never logged a workout</h4>
         <p>With no history, there is no gap to measure, so the app uses your answer to the Setup page's 7-day question: if you said you had <strong>not</strong> worked out in the last 7 days, your first week is a ramp-in week. If you said you had, it is not. Once you have real history, the answer is never read again — which is also why it is not included in an export.</p>
         <div class="callout note"><span class="ct">What you see</span><p>The <span class="label y">RAMP-IN</span> label on the exercise card and in History, with an explanation in the exercise's Notes.</p></div>
-      </section>
-
-      <!-- 9 -->
-      <section class="chapter" id="deload" data-search="deload lighter week scheduled volume recovery week">
-        <div class="ch-head"><span class="ch-num">09</span><div><h2>Deload</h2><p>A planned light week built into the program — not a reaction to a bad week.</p></div></div>
-        <p>A deload is a week of deliberately lighter work, scheduled into the program so recovery is planned instead of forced. In a deload week the app <strong>cuts the weight 10%</strong>, then sets sets and reps to reach <strong>60% of the normal volume</strong> — a 40% volume cut — always keeping at least 2 sets. On bodyweight exercises, reps are cut to 60% instead. It is lighter <strong>by design</strong>, for that week only.</p>
+        </div>
+        <div class="sub">
+          <h3 class="subhead" id="deload">Deload</h3>
+          <p class="sub-lede">A planned light week built into the program — not a reaction to a bad week.</p>
+          <p>A deload is a week of deliberately lighter work, scheduled into the program so recovery is planned instead of forced. In a deload week the app <strong>cuts the weight 10%</strong>, then sets sets and reps to reach <strong>60% of the normal volume</strong> — a 40% volume cut — always keeping at least 2 sets. On bodyweight exercises, reps are cut to 60% instead. It is lighter <strong>by design</strong>, for that week only.</p>
         <ul>
           <li><strong>Which weeks:</strong> weeks <strong>6 and 12</strong> of every 12-week cycle. The exception is Full Body, whose only deload week is <strong>week 7</strong>. The Phases variants have no scheduled deload weeks.</li>
           <li><strong>A deload week does not set your weights back.</strong> Deload workouts are skipped when the app works out your next targets, so the week after a deload picks up from the last normal week before it.</li>
           <li>A hard week, a missed week, or a week you choose to take easy does not become a scheduled deload.</li>
           <li>A deload is not a ramp-in: deload comes from the calendar of the program, ramp-in comes from a gap in your attendance.</li>
         </ul>
-        <h3>The one-time deload</h3>
+        <h4>The one-time deload</h4>
         <p>Separately from the schedule, the Coach tab can offer you a one-time deload for a single muscle group when it detects a fatigue stall — the button reads <strong>“Deload [muscle] 10% next workout.”</strong> The button cuts that muscle group's weights 10% for the next workout, and tapping the button is also the action that records a plateau on the lift. It ends as soon as you complete a workout that trains that muscle group, or after 14 days, whichever comes first. See <a href="#plateau">Plateau</a>.</p>
         <div class="callout note"><span class="ct">What you see</span><p>The <span class="label y">DELOAD</span> label on the exercise card and in History during that week, with an explanation in the exercise's Notes.</p></div>
+        </div>
       </section>
 
-      <!-- 10 -->
-      <section class="chapter" id="plateau" data-search="plateau stalled stall 10 percent drop coach tab remove plateau best set cycle">
-        <div class="ch-head"><span class="ch-num">10</span><div><h2>Plateau</h2><p>The app detects the stall. Only you can apply the 10% drop — the app never cuts a weight on its own.</p></div></div>
-        <p>Titanrep watches for stalled lifts and shows them on the Coach tab in a <strong>“Stalled lifts”</strong> card. Detection is automatic; acting on it is not. Nothing changes until you tap the button.</p>
-        <h3>How a stall is detected</h3>
-        <ul>
-          <li>Only <strong>compound lifts</strong> are checked, and only once you have at least <strong>4 workouts</strong> logged for the lift.</li>
-          <li>A lift is flagged when its <strong>top weight has not gone up across its last 4 workouts</strong> — and only when those sets have RIR logged, because the kind of stall is judged from the average RIR:</li>
-          <li><strong>Average RIR 1 or lower — a fatigue stall.</strong> The card says “You're grinding — fatigue is likely the cause,” and offers the deload button below.</li>
-          <li><strong>Average RIR 3 or higher — an easy stall.</strong> The card says “Your sets felt easy — push harder.” There is no button; the fix is effort, not a weight cut.</li>
-          <li>Between those two, no alert is shown. The card shows the exercise name, how many workouts it has stalled for, its top weight, and its average RIR.</li>
-        </ul>
-        <h3>Applying the 10% drop</h3>
-        <ol class="steps">
-          <li><div>On a fatigue stall, tap <strong>“Deload [muscle] 10% next workout.”</strong> That records the plateau on the lift — with its best set read from your workout history — and cuts <strong>that muscle group's weights 10% for the next workout</strong>.</div></li>
-          <li><div>While the plateau is active, the card shows <strong>Remove Plateau</strong> instead. Tap Remove Plateau at any time to end the plateau yourself. Removing the plateau does not cancel the 10% deload if the deload has not been used yet — the deload still applies to the next workout for that muscle group.</div></li>
-          <li><div>The 10% cut itself lasts one workout: it ends when you complete a workout that trains that muscle group, or after 14 days if you don't.</div></li>
-        </ol>
-        <h3>How it ends on its own</h3>
-        <ul>
-          <li>It <strong>clears automatically when the lift improves</strong>: when you finish a workout whose best set on that lift beats the best recorded before it — more weight, or the same weight with more reps — the plateau is removed.</li>
-          <li>An active plateau belongs to your <strong>current program and cycle</strong>: it is listed while you are on that program and cycle, and a new cycle or a different program leaves it behind.</li>
-        </ul>
-        <div class="callout quote"><p>Notes text for a plateaued exercise: “Plateau: this lift is stalled (best set X lb × Y reps). Weight cut 10% for this workout. Lasts until the lift improves, or until you remove it in the Coach tab.”</p></div>
-        <div class="callout note"><span class="ct">What you see</span><p>The <span class="label y">PLATEAU</span> label on the exercise card and in History while the plateau is selected.</p></div>
-      </section>
-
-      <!-- 11 -->
-      <section class="chapter" id="pain-flags" data-search="pain flag bothered mark with pain flag pf alternate default coach exercises that bothered you">
-        <div class="ch-head"><span class="ch-num">11</span><div><h2>Pain flags</h2><p>Flag an exercise that bothered you, and it quietly stops being the default for its slot.</p></div></div>
-        <p>If an exercise bothers you — a knee, a shoulder, anything — flag it during the workout with the <strong>“Mark With Pain Flag”</strong> button. While an exercise is flagged, that button reads “Bothering me — tap to clear.” The flag stays on until you remove it — with that button, or with <strong>Clear flag</strong> next to the exercise in the Coach tab's “Exercises that bothered you” card. The flag does not expire on its own.</p>
-        <h3>What a flag does</h3>
-        <ul>
-          <li>A flagged exercise is <strong>never the program default</strong> for its slot. An alternate is substituted in its place, silently — the workout just shows the alternate.</li>
-          <li>The <strong>one exception:</strong> if every exercise available for a slot is flagged, a flagged exercise is used anyway, so the slot is never empty.</li>
-          <li>The flagged exercise <strong>stays available as an alternate</strong>. Flagging removes it as the default, not from the app.</li>
-          <li>Your current flags are listed on the Coach tab, in the <strong>“Exercises that bothered you”</strong> card — exercise name, the date you flagged it, and any note. The AI Coach sees your flags in its overview. That current list is what transfers in an export.</li>
-          <li>Separately, each finished workout records which of its exercises were flagged at the time — that is the <span class="label r">⚠ PF</span> pill on its History card. Those per-workout records stay with the workout; they are not part of the export file.</li>
-        </ul>
-        <div class="callout quote"><p>Notes text for a flagged exercise: “Pain flag: this exercise is flagged for pain. Stays flagged until you remove it.”</p></div>
-        <div class="callout note"><span class="ct">What you see</span><p>The red <span class="label r">⚠ PF</span> label on the exercise card and in History.</p></div>
-      </section>
-
-      <!-- 12 -->
-      <section class="chapter" id="onerm" data-search="estimated 1rm one rep max epley benchmark lifts trend chart coach squat bench deadlift shoulder press">
-        <div class="ch-head"><span class="ch-num">12</span><div><h2>Estimated 1RM</h2><p>An estimate of your one-rep max, worked out from sets you have already logged. Display only.</p></div></div>
-        <p>Your estimated 1RM is calculated from your best logged set on each lift with the Epley formula:</p>
+      <!-- 6 -->
+      <section class="chapter" id="coach" data-search="coach tab ai overview get ai overview stalled lifts benchmark estimated 1rm one rep max epley benchmark lifts trend chart coach squat bench deadlift shoulder press plateau stalled stall 10 percent drop coach tab remove plateau best set cycle pain flag bothered mark with pain flag pf alternate default coach exercises that bothered you">
+        <div class="ch-head"><span class="ch-num">06</span><div><h2>Coach</h2><p>Tap <strong>Get AI Overview</strong> for an AI summary of your training — volume balance, progression, recovery, and what's next. Your stalled lifts, your current pain flags, and your benchmark lift charts are also on the Coach tab.</p></div></div>
+        <div class="sub">
+          <h3 class="subhead" id="onerm">Estimated 1RM</h3>
+          <p class="sub-lede">An estimate of your one-rep max, worked out from sets you have already logged. Display only.</p>
+          <p>Your estimated 1RM is calculated from your best logged set on each lift with the Epley formula:</p>
         <div class="formula">Estimated 1RM = weight × (1 + reps ÷ 30) <span>— the Epley formula</span></div>
         <p class="small">The formula treats the logged reps as if they were done to failure, so the estimate reads low on any set you stopped short of failure — a set stopped at RIR 3 estimates lower than the same set taken to RIR 0.</p>
-        <h3>Where it appears</h3>
+        <h4>Where it appears</h4>
         <ul>
           <li>In a workout, on the exercise card as an <strong>“Est. 1RM: X lb”</strong> line under the Target line; the same line appears on the workout preview page. The number is your best estimate across all your history for that exercise, rounded to a whole pound. The line only appears when that exercise has logged history; with no history there is nothing to estimate from.</li>
           <li>On the Coach tab, in the <strong>Benchmark lifts</strong> card, as a trend chart per lift covering its last 12 sessions, so you can see the estimate move over time.</li>
         </ul>
-        <h3>The four benchmark lifts</h3>
+        <h4>The four benchmark lifts</h4>
         <div class="tbl"><table>
           <thead><tr><th>Benchmark lift</th><th>Why it is tracked</th></tr></thead>
           <tbody>
@@ -444,21 +417,53 @@
         </table></div>
         <p>The Benchmark lifts card is <strong>collapsed by default</strong> — tap its chevron to open it. Chart labels are anchored inside the chart, so the first and last weights and dates are never cut off.</p>
         <div class="callout orange"><span class="ct">What it does not do</span><p>Estimated 1RM never changes how your weights are prescribed. Your targets come from the progression rules in <a href="#weights">How weights are picked</a> — the estimate is shown for tracking only.</p></div>
+        </div>
+        <div class="sub">
+          <h3 class="subhead" id="plateau">Plateau</h3>
+          <p class="sub-lede">The app detects the stall. Only you can apply the 10% drop — the app never cuts a weight on its own.</p>
+          <p>Titanrep watches for stalled lifts and shows them on the Coach tab in a <strong>“Stalled lifts”</strong> card. Detection is automatic; acting on it is not. Nothing changes until you tap the button.</p>
+        <h4>How a stall is detected</h4>
+        <ul>
+          <li>Only <strong>compound lifts</strong> are checked, and only once you have at least <strong>4 workouts</strong> logged for the lift.</li>
+          <li>A lift is flagged when its <strong>top weight has not gone up across its last 4 workouts</strong> — and only when those sets have RIR logged, because the kind of stall is judged from the average RIR:</li>
+          <li><strong>Average RIR 1 or lower — a fatigue stall.</strong> The card says “You're grinding — fatigue is likely the cause,” and offers the deload button below.</li>
+          <li><strong>Average RIR 3 or higher — an easy stall.</strong> The card says “Your sets felt easy — push harder.” There is no button; the fix is effort, not a weight cut.</li>
+          <li>Between those two, no alert is shown. The card shows the exercise name, how many workouts it has stalled for, its top weight, and its average RIR.</li>
+        </ul>
+        <h4>Applying the 10% drop</h4>
+        <ol class="steps">
+          <li><div>On a fatigue stall, tap <strong>“Deload [muscle] 10% next workout.”</strong> That records the plateau on the lift — with its best set read from your workout history — and cuts <strong>that muscle group's weights 10% for the next workout</strong>.</div></li>
+          <li><div>While the plateau is active, the card shows <strong>Remove Plateau</strong> instead. Tap Remove Plateau at any time to end the plateau yourself. Removing the plateau does not cancel the 10% deload if the deload has not been used yet — the deload still applies to the next workout for that muscle group.</div></li>
+          <li><div>The 10% cut itself lasts one workout: it ends when you complete a workout that trains that muscle group, or after 14 days if you don't.</div></li>
+        </ol>
+        <h4>How it ends on its own</h4>
+        <ul>
+          <li>It <strong>clears automatically when the lift improves</strong>: when you finish a workout whose best set on that lift beats the best recorded before it — more weight, or the same weight with more reps — the plateau is removed.</li>
+          <li>An active plateau belongs to your <strong>current program and cycle</strong>: it is listed while you are on that program and cycle, and a new cycle or a different program leaves it behind.</li>
+        </ul>
+        <div class="callout quote"><p>Notes text for a plateaued exercise: “Plateau: this lift is stalled (best set X lb × Y reps). Weight cut 10% for this workout. Lasts until the lift improves, or until you remove it in the Coach tab.”</p></div>
+        <div class="callout note"><span class="ct">What you see</span><p>The <span class="label y">PLATEAU</span> label on the exercise card and in History while the plateau is selected.</p></div>
+        </div>
+        <div class="sub">
+          <h3 class="subhead" id="pain-flags">Pain flags</h3>
+          <p class="sub-lede">Flag an exercise that bothered you, and it quietly stops being the default for its slot.</p>
+          <p>If an exercise bothers you — a knee, a shoulder, anything — flag it during the workout with the <strong>“Mark With Pain Flag”</strong> button. While an exercise is flagged, that button reads “Bothering me — tap to clear.” The flag stays on until you remove it — with that button, or with <strong>Clear flag</strong> next to the exercise in the Coach tab's “Exercises that bothered you” card. The flag does not expire on its own.</p>
+        <h4>What a flag does</h4>
+        <ul>
+          <li>A flagged exercise is <strong>never the program default</strong> for its slot. An alternate is substituted in its place, silently — the workout just shows the alternate.</li>
+          <li>The <strong>one exception:</strong> if every exercise available for a slot is flagged, a flagged exercise is used anyway, so the slot is never empty.</li>
+          <li>The flagged exercise <strong>stays available as an alternate</strong>. Flagging removes it as the default, not from the app.</li>
+          <li>Your current flags are listed on the Coach tab, in the <strong>“Exercises that bothered you”</strong> card — exercise name, the date you flagged it, and any note. The AI Coach sees your flags in its overview. That current list is what transfers in an export.</li>
+          <li>Separately, each finished workout records which of its exercises were flagged at the time — that is the <span class="label r">⚠ PF</span> pill on its History card. Those per-workout records stay with the workout; they are not part of the export file.</li>
+        </ul>
+        <div class="callout quote"><p>Notes text for a flagged exercise: “Pain flag: this exercise is flagged for pain. Stays flagged until you remove it.”</p></div>
+        <div class="callout note"><span class="ct">What you see</span><p>The red <span class="label r">⚠ PF</span> label on the exercise card and in History.</p></div>
+        </div>
       </section>
 
-      <!-- 13 -->
-      <section class="chapter" id="swapping" data-search="swap alternate alternatives modify default exercise slot superset pair">
-        <div class="ch-head"><span class="ch-num">13</span><div><h2>Swapping &amp; supersets</h2><p>Every slot has a default and at least three alternatives. Supersets keep both exercises' sets.</p></div></div>
-        <h3>Alternatives for every slot</h3>
-        <p>Every exercise that appears as a program default has <strong>at least 3 alternatives</strong> in its swap list. Tapping <strong>Modify</strong> on an exercise card opens the slot's alternatives — each alternate shows its own target weight, worked out from your history with that exercise. Your pick becomes the slot's exercise going forward — tonight and every workout after — until you change the pick in Modify again, and picking the program default restores the default. If you swap after logging sets for the exercise in the slot, the logged sets are cleared, because the logged sets were a different movement. A pain flag is the one automatic change: a flagged default is substituted with an alternate on its own (see <a href="#pain-flags">Pain flags</a>). A pick is recorded with the workout in which you made the pick, so deleting that workout from History removes the pick.</p>
-        <p>Each exercise also has a photo, coaching cues, and a muscle diagram. On the diagram, a Primary / Secondary key is overlaid on the image, showing which muscles are primary and which are secondary for that exercise. The Muscles slide for an exercise — including Hanging Knee Raise and Dead Bug — shows its registered diagram.</p>
-        <h3>Supersets</h3>
-        <p>In a superset, two exercises are paired and performed back to back. Both exercises are full exercises in their own right: each keeps its own sets, reps, weight, targets, and RIR when you log them, in History, and in an export. Exporting a superset exports the second exercise as its own entry — its sets are never dropped or folded into the first exercise.</p>
-      </section>
-
-      <!-- 14 -->
+      <!-- 7 -->
       <section class="chapter" id="history" data-search="history source of truth delete workout records sets pr personal record">
-        <div class="ch-head"><span class="ch-num">14</span><div><h2>History</h2><p>The History tab is the source of truth for the whole app. Delete a workout there, and it is gone everywhere.</p></div></div>
+        <div class="ch-head"><span class="ch-num">07</span><div><h2>History</h2><p>The History tab is the source of truth for the whole app. Delete a workout there, and it is gone everywhere.</p></div></div>
         <p>Your workout history. Every finished workout and its information. Expand the workout card to see the details. Each workout card shows the workout's title, program, date, duration, and volume, and carries its labels as pills next to the workout's title. Expand a workout card to see the workout's exercises and sets and the RIR values you logged; the pills also appear next to each exercise name there. The pills appear in this order: <span class="label r">⚠ PF</span> in red first, then <span class="label y">★ PR</span>, then <span class="label y">PLATEAU</span>, then <span class="label y">DELOAD</span> or <span class="label y">RAMP-IN</span> in yellow. Each card has a <strong>Delete</strong> button — tap Delete, then <strong>Tap again to delete</strong>, to remove the workout.</p>
         <h3>Why “source of truth” matters</h3>
         <ul>
@@ -468,10 +473,13 @@
         </ul>
       </section>
 
-      <!-- 15 -->
-      <section class="chapter" id="export-import" data-search="export import json new phone transfer backup superset profile pain flags program resets premium firebase google records disclaimer acceptance premium usage log">
-        <div class="ch-head"><span class="ch-num">15</span><div><h2>Export &amp; Import</h2><p>Moving to a new phone: exactly what is in the JSON file, and exactly what is not.</p></div></div>
-        <p>Export writes your data to a single JSON file; Import reads that file on the new phone and restores the data. The buttons are in the <strong>Settings tab</strong>, under “Your Workout Data.” Export only shows when you have workouts to export. Both buttons are a Premium feature — see the end of this chapter.</p>
+      <!-- 8 -->
+      <section class="chapter" id="settings-tab" data-search="settings tab export import json new phone transfer backup superset profile pain flags program resets premium firebase google records disclaimer acceptance premium usage log premium paywall price monthly annual lifetime trial subscribe upgrade subscribed revenuecat restore settings profile name notes coach goal experience saved auto save club pass disclaimer">
+        <div class="ch-head"><span class="ch-num">08</span><div><h2>Settings</h2><p>Your name, Notes for your coach, Goal, and Experience — all saved automatically — plus the Export Workout Data and Import Workout Data buttons and the Disclaimer card.</p></div></div>
+        <div class="sub">
+          <h3 class="subhead" id="export-import">Export &amp; Import</h3>
+          <p class="sub-lede">Moving to a new phone: exactly what is in the JSON file, and exactly what is not.</p>
+          <p>Export writes your data to a single JSON file; Import reads that file on the new phone and restores the data. The buttons are in the <strong>Settings tab</strong>, under “Your Workout Data.” Export only shows when you have workouts to export. Both buttons are a Premium feature — see <a href="#premium">Premium &amp; the paywall</a>, below.</p>
         <div class="two-col">
           <div class="mini"><h4>✓ In the file</h4><ul>
             <li><strong>All finished workouts</strong> — every exercise, set, rep, weight, target, and RIR value</li>
@@ -490,27 +498,26 @@
             <li><strong>Per-workout pain-flag badges</strong> — the History badges do not transfer; the current flags list does</li>
           </ul></div>
         </div>
-        <h3>How an import lands</h3>
+        <h4>How an import lands</h4>
         <ul>
           <li>Importing <strong>adds</strong> to what is on the phone — it does not wipe anything first. A workout whose date is already on the phone is <strong>skipped</strong>, and the result message tells you how many workouts and sets were imported, how many were skipped, and names any exercises in the file that this phone's app does not have.</li>
           <li>The imported profile <strong>overwrites</strong> the profile on the phone, and the imported pain flags <strong>replace</strong> the phone's current flag list.</li>
           <li>Program resets are matched to workouts by date, so they only land if the workout they follow was imported too (or was already there).</li>
         </ul>
-        <h3>Who can use it</h3>
+        <h4>Who can use it</h4>
         <p>Export and Import are <strong>locked to paying users</strong>. If you are not paying, the buttons are still shown in Settings, but <strong>disabled</strong>, with the note “Export and Import are a Premium feature.” — so you can see what you are missing. Tapping a disabled button does nothing; there is no paywall popup from these buttons.</p>
-        <h3>Records stored on Google Firebase servers</h3>
+        <h4>Records stored on Google Firebase servers</h4>
         <p>The app stores two kinds of records on Google Firebase servers:</p>
         <ul>
           <li><strong>A disclaimer acceptance record</strong>, written when you tap I Understand: anonymous customer ID, disclaimer version, time of acceptance, app version, device model and iOS version; kept 7 years.</li>
           <li><strong>A premium usage log</strong>, written each time the app lets you into a premium feature (a workout past the free one, Export, Import): anonymous customer ID, time, which premium feature was used, and — when available — the App Store transaction ID for your current subscription; kept 1 year.</li>
         </ul>
         <p>Neither record contains a name, email address, or workout data.</p>
-      </section>
-
-      <!-- 16 -->
-      <section class="chapter" id="premium" data-search="premium paywall price monthly annual lifetime trial subscribe upgrade subscribed revenuecat restore">
-        <div class="ch-head"><span class="ch-num">16</span><div><h2>Premium &amp; the paywall</h2><p>Three ways to pay, a 7-day free trial on the two subscriptions, and an upgrade-only rule.</p></div></div>
-        <p>Titanrep is a free download, and your <strong>first workout is free</strong>. When you start your second workout without Premium, the paywall appears — its headline is “First workout was on us.” Titanrep Premium unlocks the full app, including Export and Import.</p>
+        </div>
+        <div class="sub">
+          <h3 class="subhead" id="premium">Premium &amp; the paywall</h3>
+          <p class="sub-lede">Three ways to pay, a 7-day free trial on the two subscriptions, and an upgrade-only rule.</p>
+          <p>Titanrep is a free download, and your <strong>first workout is free</strong>. When you start your second workout without Premium, the paywall appears — its headline is “First workout was on us.” Titanrep Premium unlocks the full app, including Export and Import.</p>
         <div class="tbl"><table>
           <thead><tr><th>Plan</th><th>Price</th><th>Free trial</th></tr></thead>
           <tbody>
@@ -519,7 +526,7 @@
             <tr><td>Lifetime</td><td>$89.99 one-time</td><td>No trial — it is a one-time purchase, not a subscription</td></tr>
           </tbody>
         </table></div>
-        <h3>The upgrade-only rule</h3>
+        <h4>The upgrade-only rule</h4>
         <ul>
           <li>You can only move <strong>up</strong>, never down. <strong>Monthly</strong> can upgrade to Annual or Lifetime. <strong>Annual</strong> can upgrade to Lifetime. <strong>Lifetime</strong> buys nothing else — there is nothing above it.</li>
           <li>There is no “Best Value” badge on Annual, because Annual is not the best value — Lifetime is.</li>
@@ -527,14 +534,13 @@
           <li>The rule itself is printed on the paywall, centered below Restore Purchases: “Subscription downgrades are not allowed until the current subscription expires. Upgrades take effect immediately.” Plans you cannot buy are simply disabled.</li>
           <li>Purchases are validated through RevenueCat against the <strong>Titanrep Premium</strong> entitlement. Use Restore Purchases after reinstalling or changing phones to recover an existing purchase on the same Apple account.</li>
         </ul>
-        <h3>The rating prompt</h3>
+        <h4>The rating prompt</h4>
         <p>Titanrep only asks for an App Store rating in a narrow case: right after a <strong>paying</strong> user — not on the free trial — <strong>finishes a workout in which they hit a personal record</strong>, and never after the first workout. Trial and free users are never asked.</p>
-      </section>
-
-      <!-- 17 -->
-      <section class="chapter" id="settings" data-search="settings profile name notes coach goal experience saved auto save club pass disclaimer">
-        <div class="ch-head"><span class="ch-num">17</span><div><h2>Settings &amp; profile</h2><p>No Save button — everything here saves itself, and says so.</p></div></div>
-        <p>Every change on the Settings tab shows a green <strong>“Saved ✓”</strong> indicator beside the heading of the section just changed — Your Name, Notes for your coach, Your Goal, or Experience. The indicator disappears after about two seconds. If you do not see the indicator, the change has not saved.</p>
+        </div>
+        <div class="sub">
+          <h3 class="subhead" id="settings">Settings &amp; profile</h3>
+          <p class="sub-lede">No Save button — everything here saves itself, and says so.</p>
+          <p>Every change on the Settings tab shows a green <strong>“Saved ✓”</strong> indicator beside the heading of the section just changed — Your Name, Notes for your coach, Your Goal, or Experience. The indicator disappears after about two seconds. If you do not see the indicator, the change has not saved.</p>
         <p>Your <strong>Name</strong> appears in the Home tab greeting and on your Club Pass. The name is stored on the phone itself, and the name saves when you leave the field.</p>
         <p><strong>Notes for your coach</strong> are the background the AI Coach reads when the AI Coach advises you. Edits save automatically when you leave the field. The notes are part of your profile, so the notes are included in an export.</p>
         <p><strong>Goal</strong> and <strong>Experience</strong> save automatically too. Changing Goal or Experience after setup does not change your program by itself (see <a href="#programs">Your program</a>); if Goal and Experience no longer match your program, the Coach tab says so.</p>
@@ -542,11 +548,12 @@
         <p>The <strong>Disclaimer</strong> card — headed “Health &amp; Safety” over the title “Disclaimer” — starts collapsed. Tap the card's chevron to read the full disclaimer text you accepted before your first workout.</p>
         <p>The app version appears at the bottom of the Settings tab.</p>
         <div class="callout note"><span class="ct">Two things that live outside the export</span><p>Your <strong>name</strong> and <strong>Club Pass number</strong> are stored on the phone itself, not in the workout database, and they are <strong>not</strong> part of the export file. On a new phone, enter them again. Your Club Pass itself — a QR code for gym check-in — is opened from the Home tab.</p></div>
+        </div>
       </section>
 
-      <!-- 18 -->
+      <!-- 9 -->
       <section class="chapter" id="faq" data-search="faq questions why did the app questions answers">
-        <div class="ch-head"><span class="ch-num">18</span><div><h2>Questions &amp; answers</h2><p>The not-obvious things, asked the way people actually ask them.</p></div></div>
+        <div class="ch-head"><span class="ch-num">09</span><div><h2>Questions &amp; answers</h2><p>The not-obvious things, asked the way people actually ask them.</p></div></div>
         <h3>Why does my workout have fewer sets this week?</h3>
         <p>Almost always a ramp-in: you were away more than 7 days, so every exercise loses one set for one week. Check for the <span class="label y">RAMP-IN</span> label. Exactly 7 days away does not trigger it — it has to be more than 7.</p>
         <h3>Why is this exercise suddenly a different exercise?</h3>
