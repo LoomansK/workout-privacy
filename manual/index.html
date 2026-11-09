@@ -237,11 +237,11 @@
         <div class="tbl"><table>
           <thead><tr><th>Tab</th><th>What it does</th></tr></thead>
           <tbody>
-            <tr><td>Home tab</td><td>The main screen. Your next workout, your program progress, and your Club Pass. Start a workout here, or pick up a workout you left unfinished.</td></tr>
-            <tr><td>Exercise List</td><td>Not officially a tab, but its own user flow in the app — the screen you land on when you start a workout, with each exercise for the session on its own card. It is described in this manual like the other five tabs.</td></tr>
+            <tr><td>Home tab</td><td>The main screen. Top to bottom: your workout counts, your Club Pass, your next workout, your program progress, your most recent personal record, your recent volume, and your last workouts. Start a workout here, or pick up a workout you left unfinished.</td></tr>
+            <tr><td>Exercise List</td><td>Not one of the five tabs — the in-session screen you land on when you start a workout. Each exercise for the session on its own card, with Stats, Notes, and Modify on every card; the four status labels, how weights are picked, logging and RIR, and swapping and supersets are covered in the Exercise List chapter.</td></tr>
             <tr><td>Program tab</td><td>Shows your current program and its information. You can also change your program here by tapping the Change button. At the bottom is your next workouts and the ability to preview them.</td></tr>
             <tr><td>Coach tab</td><td>Tap <strong>Get AI Overview</strong> for an AI summary of your training — volume balance, progression, recovery, and what's next. Your stalled lifts, your current pain flags, and your benchmark lift charts are also on the Coach tab.</td></tr>
-            <tr><td>History tab</td><td>Your workout history. Every finished workout and its information. Expand the workout card to see the details.</td></tr>
+            <tr><td>History tab</td><td>Your workout history — and the source of truth for the whole app. Every finished workout and its information. Expand the workout card to see the details; delete a workout there and the workout is gone everywhere.</td></tr>
             <tr><td>Settings tab</td><td>Your name, Notes for your coach, Goal, and Experience — all saved automatically — plus the Export Workout Data and Import Workout Data buttons and the Disclaimer card.</td></tr>
           </tbody>
         </table></div>
@@ -262,8 +262,8 @@
         </div>
         <div class="sub">
           <h3 class="subhead" id="start-continue-workout">Start/Continue Workout</h3>
-          <p class="sub-lede">Your next workout card — preview it, start it, or pick up one you left unfinished.</p>
-          <p>The card is labeled <strong>Next Workout</strong> and shows the workout's title, how many exercises it has, and how long it runs. <strong>View Workout</strong> lets you look through the workout before you start it. <strong>Start Workout</strong> begins the workout and takes you to the Exercise List for that session.</p>
+          <p class="sub-lede">Your next workout card — start the workout, or pick up one you left unfinished.</p>
+          <p>The card is labeled <strong>Next Workout</strong> and shows the workout's title, how many exercises it has, and how long it runs. <strong>Start Workout</strong> begins the workout and takes you to the Exercise List for that session. While a workout is in progress, the card's button reads <strong>View Workout</strong> instead — tapping View Workout opens the next workout so you can look through the exercises first — and a note under the button names the workout in progress.</p>
           <p>If you leave a workout unfinished, the Home tab shows a <strong>Workout in progress</strong> card for it, with how many sets you have logged so far. <strong>Continue Workout</strong> brings the workout back with the sets you already logged intact, and <strong>Finish Workout</strong> ends it from here instead. See <a href="#logging">Logging &amp; RIR</a>.</p>
         </div>
         <div class="sub">
@@ -284,7 +284,7 @@
         <div class="sub">
           <h3 class="subhead" id="last-workouts">Last Workouts</h3>
           <p class="sub-lede">Your most recent finished workouts.</p>
-          <p><strong>Last Workouts</strong> lists your four most recent finished workouts, newest first — each with its title, its date, and its total volume in pounds. Your full history is on the <a href="#history">History tab</a>.</p>
+          <p><strong>Last workouts</strong> lists your four most recent finished workouts, newest first — each with its title, its date, and its total volume in pounds. Your full history is on the <a href="#history">History tab</a>.</p>
         </div>
       </section>
 
@@ -431,7 +431,7 @@
       <section class="chapter" id="coach" data-search="coach tab ai overview get ai overview stalled lifts benchmark estimated 1rm one rep max epley benchmark lifts trend chart coach squat bench deadlift shoulder press plateau stalled stall 10 percent drop coach tab remove plateau best set cycle pain flag bothered mark with pain flag pf alternate default coach exercises that bothered you">
         <div class="ch-head"><span class="ch-num">06</span><div><h2>Coach</h2><p>Tap <strong>Get AI Overview</strong> for an AI summary of your training — volume balance, progression, recovery, and what's next. Your stalled lifts, your current pain flags, and your benchmark lift charts are also on the Coach tab.</p></div></div>
         <p>The AI Coach overview renders one sentence per line.</p>
-        <div class="callout note"><span class="ct">Program note</span><p>If your Goal and Experience in Settings point to a different program than the one you are using, the Coach tab shows its own highlighted <strong>“PROGRAM NOTE”</strong> box, separate from the overview, with this wording: <em>“Your fitness goals in the Settings tab do not match your currently selected program. You can change your selected program in the Program tab.”</em> There is no accept button, and the note never changes your program for you.</p></div>
+        <div class="callout note"><span class="ct">Program note</span><p>If your Goal and Experience in Settings point to a different program than the one you are using, the overview includes a highlighted <strong>“PROGRAM NOTE”</strong> box with this wording: <em>“Your fitness goals in the Settings tab do not match your currently selected program. You can change your selected program in the Program tab.”</em> There is no accept button, and the note never changes your program for you. The note appears when you generate or refresh the overview — changing Goal or Experience on its own does not show the note.</p></div>
         <div class="sub">
           <h3 class="subhead" id="onerm">Estimated 1RM</h3>
           <p class="sub-lede">An estimate of your one-rep max, worked out from sets you have already logged. Display only.</p>
@@ -502,7 +502,7 @@
       <!-- 7 -->
       <section class="chapter" id="history" data-search="history source of truth delete workout records sets pr personal record">
         <div class="ch-head"><span class="ch-num">07</span><div><h2>History</h2><p>The History tab is the source of truth for the whole app. Delete a workout there, and it is gone everywhere.</p></div></div>
-        <p>Your workout history. Every finished workout and its information. Expand the workout card to see the details. Each workout card shows the workout's title, program, date, duration, and volume, and carries its labels as pills next to the workout's title. Expand a workout card to see the workout's exercises and sets and the RIR values you logged; the pills also appear next to each exercise name there. The pills appear in this order: <span class="label r">⚠ PF</span> in red first, then <span class="label y">★ PR</span>, then <span class="label y">PLATEAU</span>, then <span class="label y">DELOAD</span> or <span class="label y">RAMP-IN</span> in yellow. Each card has a <strong>Delete</strong> button — tap Delete, then <strong>Tap again to delete</strong>, to remove the workout.</p>
+        <p>Your workout history. Every finished workout and its information. Expand the workout card to see the details. Each workout card shows the workout's title, program, date, duration, and volume, and carries its labels as pills next to the workout's title. Expand a workout card to see the workout's exercises and sets and the RIR values you logged; the ⚠ PF, ★ PR, and PLATEAU pills also appear next to each exercise name there. The pills appear in this order: <span class="label r">⚠ PF</span> in red first, then <span class="label y">★ PR</span>, then <span class="label y">PLATEAU</span>, then <span class="label y">DELOAD</span> or <span class="label y">RAMP-IN</span> in yellow. Each card has a <strong>Delete</strong> button — tap Delete, then <strong>Tap again to delete</strong>, to remove the workout.</p>
         <h3>Why “source of truth” matters</h3>
         <ul>
           <li>Target weights, personal records, plateau bests, and estimated 1RM are all worked out <strong>from History</strong>, not from separate stored numbers.</li>
@@ -579,7 +579,7 @@
           <h3 class="subhead" id="settings">Settings &amp; profile</h3>
           <p class="sub-lede">No Save button — everything here saves itself, and says so.</p>
           <p>Every change on the Settings tab shows a green <strong>“Saved ✓”</strong> indicator beside the heading of the section just changed — Your Name, Notes for your coach, Your Goal, or Experience. The indicator disappears after about two seconds. If you do not see the indicator, the change has not saved.</p>
-        <p>Your <strong>Name</strong> appears in the Home tab greeting and on your Club Pass. The name is stored on the phone itself, and the name saves when you leave the field.</p>
+        <p>Your <strong>Name</strong> appears on your Club Pass. The name is stored on the phone itself, and the name saves when you leave the field.</p>
         <p><strong>Notes for your coach</strong> are the background the AI Coach reads when the AI Coach advises you. Edits save automatically when you leave the field. The notes are part of your profile, so the notes are included in an export.</p>
         <p><strong>Goal</strong> and <strong>Experience</strong> save automatically too. Changing Goal or Experience after setup does not change your program by itself (see <a href="#programs">Your program</a>); if Goal and Experience no longer match your program, the Coach tab says so.</p>
         <p>The <strong>Export Workout Data</strong> and <strong>Import Workout Data</strong> buttons live under “Your Workout Data.” Export appears only when you have workouts. For non-paying users, both buttons are shown disabled with the note “Export and Import are a Premium feature.”</p>
@@ -601,7 +601,7 @@
         <h3>What is the “Stalled lifts” card on the Coach tab?</h3>
         <p>The app flagging a compound lift whose top weight has not gone up in its last 4 workouts. If your average RIR on it is 1 or lower, it is treated as a fatigue stall and you can apply a one-time 10% deload for that muscle group. If your average RIR is 3 or higher, the card just tells you the sets felt easy — push harder. See <a href="#plateau">Plateau</a>.</p>
         <h3>The app says my goals don't match my program. What do I do?</h3>
-        <p>Nothing, unless you want to. It is a suggestion in the Coach tab's highlighted “PROGRAM NOTE” box, separate from the overview, with no accept button. To act on it, change your selected program in the Program tab yourself.</p>
+        <p>Nothing, unless you want to. It is a suggestion in the highlighted “PROGRAM NOTE” box that appears with the AI overview on the Coach tab, with no accept button. To act on it, change your selected program in the Program tab yourself.</p>
         <h3>I deleted a test workout. Why did my targets change?</h3>
         <p>Because History is the source of truth. Targets, records, and plateau bests are all worked out from History, so deleting the workout removes its effect everywhere.</p>
         <h3>I got a new phone. What will I lose?</h3>
