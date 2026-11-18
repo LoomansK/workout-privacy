@@ -186,8 +186,8 @@
     </div>
     <div class="meta">
       <span>App: <b>Titanrep — Workout Plans &amp; AI Coaching</b></span>
-      <span>Covers: <b>iOS App 1.1, through v371</b></span>
-      <span>Last updated: <b>November 8, 2026</b></span>
+      <span>Covers: <b>iOS App 1.1, through v471</b></span>
+      <span>Last updated: <b>November 17, 2026</b></span>
       <span>Support: <b>titanrep@synthetect.com</b></span>
     </div>
     <div class="quick">
@@ -274,7 +274,7 @@
         <div class="ch-head"><span class="ch-num">03</span><div><h2>Home</h2><p>The main screen. Your workout counts, your Club Pass, your next workout, your program progress, your most recent personal record, your recent volume, and your last workouts.</p></div></div>
         <div class="sub">
           <h3 class="subhead" id="workout-counts">Workout Counts</h3>
-          <p class="sub-lede">Three boxes at the top of the Home tab, counting the workouts you have finished.</p>
+          <p class="sub-lede">Three boxes at the top of the Home tab, counting the workouts you have finished: <strong>This week</strong>, <strong>This Cycle</strong> — on a Phases program the middle box reads <strong>This Phase</strong> — and <strong>Total</strong>.</p>
         </div>
         <div class="sub">
           <h3 class="subhead" id="club-pass">Club Pass</h3>
@@ -296,8 +296,8 @@
         </div>
         <div class="sub">
           <h3 class="subhead" id="recent-volume">Recent Volume</h3>
-          <p class="sub-lede">A bar chart of the volume in your most recent workouts.</p>
-          <p>Each bar is one of your recent workouts, and it shows that workout's total volume in pounds, written in thousands — for example, 12.4k lb. Normal workouts are red; a deload or ramp-in workout is yellow.</p>
+          <p class="sub-lede">A card with four charts you swipe between.</p>
+          <p>The four charts are: (1) your last 7 workouts, one bar per workout with its volume in pounds written in thousands — for example, 12.4k lb; (2) all your workouts; (3) Volume by muscle; and (4) Weekly totals. Bars are orange for a normal workout and yellow for a deload or ramp-in workout.</p>
         </div>
         <div class="sub">
           <h3 class="subhead" id="last-workouts">Last Workouts</h3>
@@ -313,7 +313,7 @@
           <h3 class="subhead" id="exercise-cards">Exercise cards</h3>
           <p class="sub-lede">Each exercise in a workout has its own card, with Stats, Notes, and Modify buttons.</p>
         <h4>Stats</h4>
-        <p>The <strong>Stats</strong> button opens a stats view for that exercise. The stats view shows how many sessions you have logged for the exercise, your best set, and your best estimated 1RM. Your best set is the heaviest weight at which you did all the recommended sets at the recommended reps. It is shown as weight, reps, and sets. Compound lifts also show a strength trend — your best weight per session — and every exercise shows a chart of your top set weight per session and a list of every session with the sets you logged.</p>
+        <p>The <strong>Stats</strong> button opens a stats view for that exercise. The stats view shows boxes for <strong>Sessions</strong> and <strong>Est. 1RM</strong>, and below them two boxes: <strong>Best first</strong> and <strong>Best non-first</strong>. Best first is your best in workouts where the exercise was the first exercise you did; Best non-first is your best in workouts where it came later. Each best is the heaviest weight at which you completed all the target sets at the target reps or better — using the sets and reps the exercise has in the workout you opened the stats from — and it is shown as weight, reps, and sets. The box for the position of the workout you opened it from is outlined in dark. If no workout in that position qualifies, the box shows dashes. Compound lifts also show a strength trend — your best weight per session — and every exercise shows a chart of your top set weight per session and a list of every session with the sets you logged, with each session in the list marked <strong>First</strong> or <strong>Non-first</strong>.</p>
         <h4>Notes</h4>
         <p>The <strong>Notes</strong> button opens the exercise's Notes. The Notes show the Pro Tip form cues, the Target weight and reps, the Tempo, and any status explanation — for example a ramp-in, deload, plateau, or pain flag explanation when one applies to that exercise.</p>
         <p>Tempo is shown in the Notes. The tempo is set per workout, so every exercise in the same workout uses the same tempo.</p>
@@ -340,10 +340,11 @@
           <h3 class="subhead" id="weights">How weights are picked</h3>
           <p class="sub-lede">The target weight/reps on each exercise card comes from that exercise's own history. If the exercise has no history, the target comes from another exercise that works the same muscle. If there's no history for that muscle, there's no target.</p>
           <p>The weight pre-filled on an exercise card comes from your own logged history, if available. It is worked out per exercise from your own logged history, across every workout you have logged, not just workouts in your current program. After each finished workout, the app decides that exercise's next target:</p>
+          <p>Targets are kept separately for each position: the app keeps a separate target for an exercise done first in a workout and for the same exercise done later, at each rep target. If the exercise has never been done first, its first-position target starts from the target set by its later-position workouts. If it has only ever been done first, its later-position target starts at 85% of its best first-position weight.</p>
         <ul>
           <li><strong>Hit every planned set at the target reps → the weight goes up.</strong> The increase is a percentage of the weight you used: on compound lifts, 2.5% at 200 lb and above, 5% below that; on isolation lifts, 10% up to 20 lb, 7.5% up to 40 lb, and 5% above that. An increase is at least 5 lb, and every target is rounded to the nearest 2.5 lb.</li>
           <li><strong>Hit every set, but every set was RIR 0 → the weight holds.</strong> All-out grinders earn you another week at the same weight to own it, instead of an increase.</li>
-          <li><strong>Miss the rep target → the weight holds.</strong> Same weight next time, until every planned set hits the target reps.</li>
+          <li><strong>Miss the rep target → the weight holds.</strong> Next time the weight holds at the heavier of the target weight and the heaviest weight you actually lifted, until every planned set hits the target reps.</li>
           <li><strong>You lowered the weight yourself → that lower weight becomes the target.</strong> Whether or not you hit the reps at the decreased weight, the app keeps it for next time rather than jumping back up.</li>
           <li><strong>Deload weeks are skipped.</strong> A deload workout never changes the next normal week's target — the week after a deload picks up from the last normal week before it.</li>
           <li><strong>First time on an exercise.</strong> If you have never done that exercise, the target is estimated from your best exercise for the same muscle, at 90% — the card's note says “Target from your … work — first time on this lift, so adjust after the first set”.</li>
@@ -351,7 +352,7 @@
           <li><strong>History is the source of truth.</strong> Personal records, stall checks, and targets are all worked out from your full history. If a workout is deleted from History, nothing from it counts anymore — not toward targets, records, or anything else in the app.</li>
         </ul>
         <p>Two things change the target for a single week without changing the progression itself: a <a href="#deload">deload</a> (scheduled, or one you apply from the Coach tab) cuts the displayed weight 10% for that workout, and a <a href="#ramp-in">ramp-in</a> week takes a set away but leaves the weight alone.</p>
-        <div class="callout orange"><span class="ct">Estimated 1RM does not set your weight</span><p>The estimated 1RM shown under the Target line is display only. It never feeds back into how your weights are prescribed. See <a href="#onerm">Estimated 1RM</a>.</p></div>
+        <div class="callout orange"><span class="ct">Estimated 1RM does not set your weight</span><p>The estimated 1RM shown on the exercise card is display only. It never feeds back into how your weights are prescribed. See <a href="#onerm">Estimated 1RM</a>.</p></div>
         </div>
         <div class="sub">
           <h3 class="subhead" id="logging">Logging &amp; RIR</h3>
@@ -463,7 +464,7 @@
         <p class="small">The formula treats the logged reps as if they were done to failure, so the estimate reads low on any set you finished short of failure — a set finished at RIR 3 estimates lower than the same set taken to RIR 0.</p>
         <h4>Where it appears</h4>
         <ul>
-          <li>In a workout, on the exercise card as an <strong>“Est. 1RM: X lb”</strong> line under the Target line; the same line appears on the workout preview page. The number is your best estimate across all your history for that exercise, rounded to a whole pound. The line only appears when that exercise has logged history; with no history there is nothing to estimate from.</li>
+          <li>In a workout, on the exercise card as <strong>“Est. 1RM: X lb”</strong> at the right end of the row with the Start button; it also appears on the workout preview page. The number is your best estimate across all your history for that exercise, rounded to a whole pound. It only appears when that exercise has logged history; with no history there is nothing to estimate from.</li>
           <li>On the Coach tab, in the <strong>Benchmark lifts</strong> card, as a trend chart per lift covering its last 12 sessions, so you can see the estimate move over time.</li>
         </ul>
         <h4>The four benchmark lifts</h4>
@@ -485,8 +486,8 @@
           <p>Titanrep watches for stalled lifts and shows them on the Coach tab in a <strong>“Stalled lifts”</strong> card. Detection is automatic; acting on it is not. Nothing changes until you tap the button.</p>
         <h4>How a stall is detected</h4>
         <ul>
-          <li>Only <strong>compound lifts</strong> are checked, and only once you have at least <strong>4 workouts</strong> logged for the lift.</li>
-          <li>A lift is flagged when its <strong>top weight has not gone up across its last 4 workouts</strong> — and only when those sets have RIR logged, because the kind of stall is judged from the average RIR:</li>
+          <li>Only <strong>compound lifts</strong> are checked. The check compares only workouts where the lift was in the same position — done first in the workout, or done later; the two are never compared with each other — and it needs at least <strong>4 workouts in the same position</strong>.</li>
+          <li>A lift is flagged when its <strong>top weight has not gone up across the last 4 of those workouts</strong> — and only when those sets have RIR logged, because the kind of stall is judged from the average RIR:</li>
           <li><strong>Average RIR 1 or lower — a fatigue stall.</strong> The card says “You're grinding — fatigue is likely the cause,” and offers the deload button below.</li>
           <li><strong>Average RIR 3 or higher — an easy stall.</strong> The card says “Your sets felt easy — push harder.” There is no button; the fix is effort, not a weight cut.</li>
           <li>Between those two, no alert is shown. The card shows the exercise name, how many workouts it has stalled for, its top weight, and its average RIR.</li>
@@ -578,7 +579,9 @@
         <div class="sub">
           <h3 class="subhead" id="premium">Premium &amp; the paywall</h3>
           <p class="sub-lede">Three ways to pay, a 7-day free trial on the two subscriptions, and an upgrade-only rule.</p>
-          <p>Titanrep is a free download, and your <strong>first workout is free</strong>. When you start your second workout without Premium, the paywall appears — its headline is “First workout was on us.” Titanrep Premium unlocks the full app, including Export and Import.</p>
+          <p>Titanrep is a free download, and your <strong>first workout is free</strong>. When you start your second workout without Premium, the paywall appears — its headline is “You started. Don't stop now.” Titanrep Premium unlocks the full app, including Export and Import.</p>
+          <h4>Closing the paywall</h4>
+          <p>Tapping the paywall's close button can bring up a discounted offer — Monthly or Annual at a lower price for the first term, with Annual selected — but only if you are eligible for introductory pricing. Anyone who already used the group's free trial is not eligible. If you decline that too, and you have never paid, the app shows a one-question feedback form before returning to the Home tab; if you paid before, you go straight back to the Home tab.</p>
         <div class="tbl"><table>
           <thead><tr><th>Plan</th><th>Price</th><th>Free trial</th></tr></thead>
           <tbody>
@@ -621,7 +624,7 @@
         <h3>Why did my weight drop 10%?</h3>
         <p>Two things do that, and both are temporary. It is a <strong>deload week</strong> (week 6 or 12 of your cycle; week 7 on Full Body), where the 10% cut comes with a 40% volume cut — or it is the <strong>one-time deload you applied</strong> from a “Stalled lifts” card in the Coach tab, which cuts one muscle group 10% for one workout. Nothing in Titanrep cuts a weight without one of those two reasons, and neither one changes your underlying progression.</p>
         <h3>What is the “Stalled lifts” card on the Coach tab?</h3>
-        <p>The app flagging a compound lift whose top weight has not gone up in its last 4 workouts. If your average RIR on it is 1 or lower, it is treated as a fatigue stall and you can apply a one-time 10% deload for that muscle group. If your average RIR is 3 or higher, the card just tells you the sets felt easy — push harder. See <a href="#plateau">Plateau</a>.</p>
+        <p>The app flagging a compound lift whose top weight has not gone up in its last 4 workouts in the same position. If your average RIR on it is 1 or lower, it is treated as a fatigue stall and you can apply a one-time 10% deload for that muscle group. If your average RIR is 3 or higher, the card just tells you the sets felt easy — push harder. See <a href="#plateau">Plateau</a>.</p>
         <h3>The app says my goals don't match my program. What do I do?</h3>
         <p>Nothing, unless you want to. It is a suggestion in the highlighted “PROGRAM NOTE” box that appears with the AI overview on the Coach tab, with no accept button. To act on it, change your selected program in the Program tab yourself.</p>
         <h3>I deleted a test workout. Why did my targets change?</h3>
@@ -629,7 +632,7 @@
         <h3>I got a new phone. What will I lose?</h3>
         <p>Export on the old phone and import on the new one, and you keep your finished workouts, your profile (including your Notes for your coach), your current pain flags, and your program resets. You lose: any workout in progress at export time, your Modify picks, your name and Club Pass number (re-enter them), and the 7-day answer (never needed once history exists). Export and Import require Premium.</p>
         <h3>Why is there no Est. 1RM on this exercise?</h3>
-        <p>It only appears when the exercise has logged history. Log a set for it and the estimate appears under the Target line.</p>
+        <p>It only appears when the exercise has logged history. Log a set for it and the estimate appears on the exercise card.</p>
         <h3>Can I downgrade from Annual to Monthly?</h3>
         <p>Yes, but you must wait for Annual to expire before subscribing to Monthly.</p>
         <h3>Where are Export and Import?</h3>
@@ -637,7 +640,7 @@
       </section>
 
       <footer>
-        <p><strong>Titanrep</strong> — Workout Plans &amp; AI Coaching. Support: titanrep@synthetect.com · This manual covers iOS App 1.1 through v371 and was last updated November 8, 2026. Prices are in US dollars. This manual is a living document and is refined as the app changes.</p>
+        <p><strong>Titanrep</strong> — Workout Plans &amp; AI Coaching. Support: titanrep@synthetect.com · This manual covers iOS App 1.1 through v471 and was last updated November 17, 2026. Prices are in US dollars. This manual is a living document and is refined as the app changes.</p>
       </footer>
     </main>
   </div>
