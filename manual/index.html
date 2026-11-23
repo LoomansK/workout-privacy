@@ -362,7 +362,7 @@
                                   <h4>Where it appears</h4>
         <ul>
           <li>In a workout, on the exercise card as <strong>“Est. 1RM: X lb”</strong> at the right end of the row with the Start button; it also appears on the workout preview page. The number is your best estimate across all your history for that exercise, rounded to a whole pound. It only appears when that exercise has logged history; with no history there is nothing to estimate from.</li>
-          <li>On the Coach tab, in the <strong>Benchmark lifts</strong> card, as a trend chart per lift covering its last 12 workouts, so you can see the estimate move over time.</li>
+          <li>On the Coach tab, in the <strong>Estimated 1RM</strong> card, as a trend chart per lift covering its last 12 workouts, so you can see the estimate move over time.</li>
         </ul>
                 <div class="callout orange"><span class="ct">What it does not do</span><p>Estimated 1RM never changes how your weights are prescribed. Your weight targets come from the progression rules in <a href="#weights">How weights are picked</a> — the estimate is shown for tracking only.</p></div>
         </div>
@@ -376,7 +376,7 @@
         <ul>
           <li>RIR is how Titanrep judges effort. The same weight at RIR 1 is a harder set than at RIR 3.</li>
           <li>RIR shows in the History tab and the Stats page.</li>
-          <li>Your average RIR is shown on the Coach tab in the “Stalled lifts” card, because a stall at low RIR means something different from a stall at high RIR — see <a href="#plateau">Plateau</a>. A stall is only flagged when the sets have RIR logged; without RIR values, the app cannot tell which kind of stall it is.</li>
+          <li>Your average RIR is shown on the Coach tab in the “Plateau” card, because a stall at low RIR means something different from a stall at high RIR — see <a href="#plateau">Plateau</a>. A stall is only flagged when the sets have RIR logged; without RIR values, the app cannot tell which kind of stall it is.</li>
         </ul>
         </div>
         <div class="sub">
@@ -445,7 +445,7 @@
       <section class="chapter" id="coach" data-search="coach tab ai overview get ai overview stalled lifts benchmark estimated 1rm one rep max epley benchmark lifts trend chart coach squat bench deadlift shoulder press plateau stalled stall 10 percent drop coach tab remove plateau best set cycle pain flag bothered mark with pain flag pf alternate default coach exercises that bothered you">
         <div class="ch-head"><span class="ch-num">06</span><div><h2>Coach</h2><p>Tap <strong>Get AI Overview</strong> for an AI summary of your training — volume balance, progression, recovery, and what's next. Your stalled lifts, your current pain flags, and your benchmark lift charts are also on the Coach tab.</p></div></div>
         <div class="sub">
-          <h3 class="subhead" id="stalled-lifts">Stalled lifts</h3>
+          <h3 class="subhead" id="stalled-lifts">Plateau</h3>
           <p class="sub-lede">Lifts that have stopped improving.</p>
           <ul>
             <li>This section only appears when a lift has stalled.</li>
@@ -465,7 +465,7 @@
           </ul>
         </div>
         <div class="sub">
-          <h3 class="subhead" id="ai-overview">Coach</h3>
+          <h3 class="subhead" id="ai-overview">AI Coach</h3>
           <p class="sub-lede">The AI overview of your training.</p>
           <ul>
             <li>Tap <strong>Get AI Overview</strong> and the Coach looks at your logged workouts — volume balance, progression, and recovery — and writes an overview. Tap <strong>Refresh Overview</strong> to run it again.</li>
@@ -475,7 +475,7 @@
           </ul>
         </div>
         <div class="sub">
-          <h3 class="subhead" id="benchmark-lifts">Benchmark lifts</h3>
+          <h3 class="subhead" id="benchmark-lifts">Estimated 1RM</h3>
           <p class="sub-lede">Your estimated 1RM on four lifts, over time.</p>
           <ul>
             <li>The four benchmark lifts are Smith Machine Squat, Hammer Strength Iso-Lateral Horizontal Bench Press, Smith Machine Romanian Deadlift, and Seated Dumbbell Shoulder Press.</li>
@@ -484,7 +484,7 @@
           </ul>
         </div>
         <div class="sub">
-          <h3 class="subhead" id="coach-pain-flags">Exercises that caused you pain</h3>
+          <h3 class="subhead" id="coach-pain-flags">Pain flags</h3>
           <p class="sub-lede">Your pain flags, in one list.</p>
           <ul>
             <li>Every exercise you marked with <strong>Mark With Pain Flag</strong> is listed here, with the date you flagged it.</li>
@@ -538,7 +538,7 @@
             <li><strong>All finished workouts</strong> — every exercise, set, rep, weight, weight target, and RIR value</li>
             <li><strong>Supersets in full</strong> — both exercises, each as its own entry with its own sets</li>
             <li><strong>Your profile</strong> — current program, Goal, Experience, days per week, equipment, and your Notes for your coach (the 7-day answer is not included — see below)</li>
-            <li><strong>Current pain flags</strong> — the flags list from the Coach tab's “Exercises that caused you pain” card</li>
+            <li><strong>Current pain flags</strong> — the flags list from the Coach tab's “Pain flags” card</li>
             <li><strong>Program resets</strong> — the start-over markers, matched by workout date, so week counting carries over</li>
           </ul></div>
           <div class="mini"><h4>✕ Not in the file</h4><ul>
@@ -650,7 +650,7 @@
         <div class="sub">
           <h3 class="subhead" id="plateau">Plateau</h3>
           <p class="sub-lede">The app detects the stall. Only you can apply the 10% drop — the app never cuts a weight on its own.</p>
-          <p>Titanrep watches for stalled lifts and shows them on the Coach tab in a <strong>“Stalled lifts”</strong> card. Detection is automatic; acting on it is not. Nothing changes until you tap the button.</p>
+          <p>Titanrep watches for stalled lifts and shows them on the Coach tab in a <strong>“Plateau”</strong> card. Detection is automatic; acting on it is not. Nothing changes until you tap the button.</p>
         <h4>How a stall is detected</h4>
         <ul>
           <li>Only <strong>compound lifts</strong> are checked. The check compares only workouts where the lift was in the same position — done first in the workout, or done later; the two are never compared with each other — and it needs at least <strong>4 workouts in the same position</strong>.</li>
@@ -676,13 +676,13 @@
         <div class="sub">
           <h3 class="subhead" id="pain-flags">Pain flags</h3>
           <p class="sub-lede">Flag an exercise that caused you pain, and it quietly stops being the default for its slot.</p>
-          <p>If an exercise causes you pain — a knee, a shoulder, anything — flag it during the workout with the <strong>“Mark With Pain Flag”</strong> button. While an exercise is flagged, that button reads “Causing me pain — tap to clear.” The flag stays on until you remove it — with that button, or with <strong>Clear flag</strong> next to the exercise in the Coach tab's “Exercises that caused you pain” card. The flag does not expire on its own.</p>
+          <p>If an exercise causes you pain — a knee, a shoulder, anything — flag it during the workout with the <strong>“Mark With Pain Flag”</strong> button. While an exercise is flagged, that button reads “Causing me pain — tap to clear.” The flag stays on until you remove it — with that button, or with <strong>Clear flag</strong> next to the exercise in the Coach tab's “Pain flags” card. The flag does not expire on its own.</p>
         <h4>What a flag does</h4>
         <ul>
           <li>A flagged exercise is <strong>never the program default</strong> for its slot. An alternate is substituted in its place, silently — the workout just shows the alternate.</li>
           <li>The <strong>one exception:</strong> if every exercise available for a slot is flagged, a flagged exercise is used anyway, so the slot is never empty.</li>
           <li>The flagged exercise <strong>stays available as an alternate</strong>. Flagging removes it as the default, not from the app.</li>
-          <li>Your current flags are listed on the Coach tab, in the <strong>“Exercises that caused you pain”</strong> card — exercise name, the date you flagged it, and any note. The AI Coach sees your flags in its overview. That current list is what transfers in an export.</li>
+          <li>Your current flags are listed on the Coach tab, in the <strong>“Pain flags”</strong> card — exercise name, the date you flagged it, and any note. The AI Coach sees your flags in its overview. That current list is what transfers in an export.</li>
           <li>Separately, each finished workout records which of its exercises were flagged at the time — that is the <span class="label r">⚠ PF</span> pill on its History card. Those per-workout records stay with the workout; they are not part of the export file.</li>
         </ul>
         <div class="callout quote"><p>Notes text for a flagged exercise: “Pain flag: this exercise is flagged for pain. Stays flagged until you remove it.”</p></div>
@@ -696,10 +696,10 @@
         <h3>Why does my workout have fewer sets this week?</h3>
         <p>Almost always a ramp-in: you were away more than 7 days, so every exercise loses one set for one week. Check for the <span class="label y">RAMP-IN</span> label. Exactly 7 days away does not trigger it — it has to be more than 7.</p>
         <h3>Why is this exercise suddenly a different exercise?</h3>
-        <p>If the exercise has a pain flag, it is never the slot's default — an alternate is substituted silently. Remove the flag from the Coach tab's “Exercises that caused you pain” card and it can be the default again.</p>
+        <p>If the exercise has a pain flag, it is never the slot's default — an alternate is substituted silently. Remove the flag from the Coach tab's “Pain flags” card and it can be the default again.</p>
         <h3>Why did my weight drop 10%?</h3>
-        <p>Two things do that, and both are temporary. It is a <strong>deload week</strong> (week 6 or 12 of your cycle; week 7 on Full Body), where the 10% cut comes with a 40% volume cut — or it is the <strong>one-time deload you applied</strong> from a “Stalled lifts” card in the Coach tab, which cuts one muscle group 10% for one workout. Nothing in Titanrep cuts a weight without one of those two reasons, and neither one changes your underlying progression.</p>
-        <h3>What is the “Stalled lifts” card on the Coach tab?</h3>
+        <p>Two things do that, and both are temporary. It is a <strong>deload week</strong> (week 6 or 12 of your cycle; week 7 on Full Body), where the 10% cut comes with a 40% volume cut — or it is the <strong>one-time deload you applied</strong> from a “Plateau” card in the Coach tab, which cuts one muscle group 10% for one workout. Nothing in Titanrep cuts a weight without one of those two reasons, and neither one changes your underlying progression.</p>
+        <h3>What is the “Plateau” card on the Coach tab?</h3>
         <p>The app flagging a compound lift whose top weight has not gone up in its last 4 workouts in the same position. If your average RIR on it is 1 or lower, it is treated as a fatigue stall and you can apply a one-time 10% deload for that muscle group. If your average RIR is 3 or higher, the card just tells you the sets felt easy — push harder. See <a href="#plateau">Plateau</a>.</p>
         <h3>The app says my goals don't match my program. What do I do?</h3>
         <p>Nothing, unless you want to. It is a suggestion in the highlighted “PROGRAM NOTE” box that appears with the AI overview on the Coach tab, with no accept button. To act on it, change your selected program in the Program tab yourself.</p>
